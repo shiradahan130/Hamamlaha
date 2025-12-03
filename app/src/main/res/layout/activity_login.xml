@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+
+        app:srcCompat="@drawable/background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-28dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ff0084" />
+
+        <Button
+            android:id="@+id/goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_gravity="right"
+            android:fontFamily="@font/miriwinwebfont"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:text="➜" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="70dp"
+            android:fontFamily="@font/nootaj"
+            android:text="התחברות"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/et_login_email"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/miriwinwebfont"
+            android:hint="אימייל"
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/black"
+            android:textSize="13sp" />
+        <!-- הקו התחתון -->
+        <View
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/black" />
+
+
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/miriwinwebfont"
+            android:hint="סיסמה"
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="@color/black"
+            android:textSize="13sp" />
+        <!-- הקו התחתון -->
+        <View
+            android:layout_width="380dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/black" />
+
+        <Button
+            android:id="@+id/btn_login_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="340dp"
+            android:fontFamily="@font/asakimboldwebfont"
+            android:backgroundTint="#ff0084"
+            android:text="כניסה" />
+
+        <View
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:background="#ff0084" />
+
+
+    </LinearLayout>
+  </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

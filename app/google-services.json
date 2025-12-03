@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "308128042642",
+    "project_id": "hamamlaha-59048",
+    "storage_bucket": "hamamlaha-59048.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308128042642:android:ba6ac72c3b9e9c7ca6604b",
+        "android_client_info": {
+          "package_name": "com.example.hamamlaha"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnynA6MpQqstJq4EFKBxjLiZLAe8xaKBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
