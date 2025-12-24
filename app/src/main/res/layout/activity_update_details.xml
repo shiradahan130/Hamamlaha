@@ -5,20 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.LoginActivity">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+    tools:context=".screens.updateDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top|center_horizontal"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-28dp">
+        android:orientation="vertical">
 
         <!-- פס עליון + תמונה -->
         <FrameLayout
@@ -45,22 +37,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:layout_gravity="right"
-            android:fontFamily="@font/miriwinwebfont"
+            android:layout_gravity="end"
             android:textColor="@color/black"
             android:textSize="30dp"
+            android:layout_marginBottom="50dp"
             android:text="➜" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="40dp"
             android:fontFamily="@font/nootaj"
-            android:text="התחברות"
-            android:textSize="30sp" />
-
+            android:layout_gravity="center"
+            android:text="עדכון פרטים"
+            android:textSize="37sp" />
 
         <!-- כרטיס מידע -->
         <com.google.android.material.card.MaterialCardView
@@ -79,16 +70,69 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="הכנס פרטים"
+                    android:text="פרטים אישיים"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:fontFamily="@font/miriwinwebfont"
                     android:layout_marginBottom="5dp"
                     android:layout_gravity="right"/>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl">
+
+                    <!-- שדה שם פרטי -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/firstnameInput_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:hint="שם פרטי"
+                        android:maxWidth="488dp"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/black"            >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/firstnameInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="@android:color/black"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- הרווח האוטומטי -->
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="1"/>
+
+                    <!-- שדה שם משפחה -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/lastnameInput_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:hint="שם משפחה"
+                        android:maxWidth="488dp"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/black"            >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/lastnameInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:textColor="@android:color/black"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
                 <!-- שדה אימייל -->
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_login_email_layout"
+                    android:id="@+id/emailInput_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,7 +142,7 @@
                     android:textColor="@android:color/black"
                     android:textColorHint="@color/black"            >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_login_email"
+                        android:id="@+id/emailInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -106,10 +150,30 @@
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- שדה מספר טלפון -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phonenumberInput_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="מספר טלפון"
+                    android:maxWidth="488dp"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/black"            >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phonenumberInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:textColor="@android:color/black"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- שדה סיסמה -->
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_login_password_layout"
+                    android:id="@+id/passwordInput_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,7 +184,7 @@
                     app:endIconMode="password_toggle"
                     android:textColorHint="@color/black"            >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_login_password"
+                        android:id="@+id/passwordInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
@@ -130,14 +194,14 @@
 
                 <!-- כפתור למטה -->
                 <Button
-                    android:id="@+id/btn_login_login"
+                    android:id="@+id/btn_updateDetails_toHome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:backgroundTint="#ff0084"
                     android:fontFamily="@font/asakimboldwebfont"
-                    android:text="התחבר"
+                    android:text="עידכון פרטים"
                     android:textColor="@color/black"
                     android:textSize="15pt"/>
                 <!--app:icon="@android:drawable/ic_menu_save"-->
@@ -145,12 +209,13 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+
         <View
-            android:layout_marginTop="280dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:background="#ff0084" />
+            android:background="#ff0084"
+            android:layout_marginTop="60dp" />
     </LinearLayout>
-  </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

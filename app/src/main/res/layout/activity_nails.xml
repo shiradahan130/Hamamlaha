@@ -10,19 +10,121 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- פס עליון + תמונה -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ff0084" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/hlogo" />
+        </FrameLayout>
 
         <Button
             android:id="@+id/goBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:layout_gravity="right"
-            android:fontFamily="@font/miriwinwebfont"
+            android:layout_gravity="end"
             android:textColor="@color/black"
             android:textSize="30dp"
             android:layout_marginBottom="50dp"
             android:text="➜" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:fontFamily="@font/nootaj"
+            android:text="איזה שירות תרצו?"
+            android:textSize="37sp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/btn_miloylak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginEnd="90dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="מילוי" />
+
+                <RadioButton
+                    android:id="@+id/btn_bneea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="בנייה" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/btn_lakGel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginEnd="90dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="לק גל" />
+
+                <RadioButton
+                    android:id="@+id/btn_zeuorim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginEnd="100dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="ציורים" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btncontinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/asakimboldwebfont"
+            android:backgroundTint="#ff0084"
+            android:text="המשך" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#ff0084"
+            android:layout_marginTop="60dp" />
 
     </LinearLayout>
 
