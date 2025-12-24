@@ -12,8 +12,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
+import com.example.hamamlaha.models.User;
+import com.example.hamamlaha.utils.SharedPreferencesUtil;
 
 public class LandingActivity extends AppCompatActivity {
+
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,14 @@ public class LandingActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        user= SharedPreferencesUtil.getUser(LandingActivity.this);
+        if(SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {
+            Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
         Button login=findViewById(R.id.login);
         Button singUp = findViewById(R.id.signUp);
         login.setOnClickListener(new View.OnClickListener(){
