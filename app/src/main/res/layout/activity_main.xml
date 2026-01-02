@@ -37,9 +37,37 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/hlogo" />
-            </FrameLayout>>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#ff0084"
+                        android:layout_marginStart="30dp"
+                        app:srcCompat="@drawable/baseline_account_circle_24" />
+
+                    <Button
+                        android:id="@+id/btn_signOut"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:fontFamily="@font/nootaj"
+                        android:text="[➜"
+                        android:layout_marginStart="250dp"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </FrameLayout>
 
             <!-- טקסט -->
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -51,6 +79,7 @@
                 android:textSize="37sp" />
 
             <!-- שורה 1 -->
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

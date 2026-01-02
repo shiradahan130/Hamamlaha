@@ -95,4 +95,9 @@ public class User
                 ", isAdmin=" + isAdmin +
                 '}';
     }
+
+    public String getFullName(){
+        return this.fname+this.lname;
+    }
+
 }

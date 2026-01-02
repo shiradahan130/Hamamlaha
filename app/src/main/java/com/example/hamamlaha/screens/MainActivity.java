@@ -17,6 +17,8 @@ import com.example.hamamlaha.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button bnt_signOut;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +30,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        ImageButton button = findViewById(R.id.imageBtnhair);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        Button button = findViewById(R.id.btn_signOut);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, SignoutActivity.class);
+            startActivity(intent);
+            });
+
+
+        ImageButton button0 = findViewById(R.id.imageBtnhair);
+        button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, HairActivity.class);
