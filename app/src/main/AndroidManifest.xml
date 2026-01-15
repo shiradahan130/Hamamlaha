@@ -13,7 +13,10 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="31">
         <activity
-            android:name=".screens.LandingActivity"
+            android:name=".screens.UsersListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.MainActivity"
             android:exported="false" />
         <activity
             android:name=".screens.SignoutActivity"
@@ -37,7 +40,7 @@
             android:name=".screens.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.MainActivity"
+            android:name=".screens.UserProfileActivity"
             android:exported="false" />
         <activity
             android:name=".screens.LaserActivity"
@@ -52,7 +55,7 @@
             android:name=".screens.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.UsersListActivity"
+            android:name=".screens.LandingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

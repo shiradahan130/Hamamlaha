@@ -21,41 +21,51 @@
         tools:layout_editor_absoluteY="-28dp">
 
         <!-- פס עליון + תמונה -->
-        <FrameLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="#ff0084" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/hlogo" />
-        </FrameLayout>
-
-        <Button
-            android:id="@+id/goBack"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_gravity="right"
-            android:fontFamily="@font/miriwinwebfont"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:text="➜" />
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="#ff0084"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:paddingVertical="8dp"
+                    android:src="@drawable/hlogo" />
+
+                <Button
+                    android:id="@+id/goBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:text="➜" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="150dp"
             android:layout_marginBottom="40dp"
             android:fontFamily="@font/nootaj"
             android:text="התחברות"
@@ -146,7 +156,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <View
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="190dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"

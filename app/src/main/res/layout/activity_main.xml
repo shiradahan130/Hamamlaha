@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,67 +8,58 @@
     android:layout_height="match_parent"
     tools:context=".screens.MainActivity">
 
+    <!-- פס עליון קבוע -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="#ff0084"
+            android:layoutDirection="rtl">
+
+            <!-- כפתור פרופיל -->
+            <ImageButton
+                android:id="@+id/bnt_UserProfile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/baseline_account_circle_24" />
+
+            <!-- לוגו -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:paddingVertical="8dp"
+                android:src="@drawable/hlogo" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- תוכן גולל -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- LinearLayout יחיד בתוך ScrollView -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- פס עליון + תמונה -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="#ff0084" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/hlogo" />
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="#ff0084"
-                        android:layout_marginStart="30dp"
-                        app:srcCompat="@drawable/baseline_account_circle_24" />
-
-                    <Button
-                        android:id="@+id/btn_signOut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:fontFamily="@font/nootaj"
-                        android:text="[➜"
-                        android:layout_marginStart="250dp"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-            </FrameLayout>
-
             <!-- טקסט -->
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -79,14 +71,12 @@
                 android:textSize="37sp" />
 
             <!-- שורה 1 -->
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <!-- כפתור 1 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp">
@@ -110,7 +100,6 @@
                         android:background="#80FFFFFF" />
                 </FrameLayout>
 
-                <!-- כפתור 2 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
@@ -143,7 +132,6 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <!-- כפתור 3 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp">
@@ -167,7 +155,6 @@
                         android:background="#80FFFFFF" />
                 </FrameLayout>
 
-                <!-- כפתור 4 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
@@ -200,7 +187,6 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <!-- כפתור 5 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp">
@@ -224,7 +210,6 @@
                         android:background="#80FFFFFF" />
                 </FrameLayout>
 
-                <!-- כפתור 6 -->
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
@@ -261,4 +246,3 @@
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

@@ -17,7 +17,7 @@ import com.example.hamamlaha.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bnt_signOut;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Button button = findViewById(R.id.btn_signOut);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, SignoutActivity.class);
-            startActivity(intent);
-            });
-
+        ImageButton button00 = findViewById(R.id.bnt_UserProfile);
+        button00.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ImageButton button0 = findViewById(R.id.imageBtnhair);
         button0.setOnClickListener(new View.OnClickListener() {
