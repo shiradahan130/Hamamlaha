@@ -23,7 +23,7 @@ public class User
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.isAdmin = isAdmin;
+        this.isAdmin = false;
     }
 
     public String getFname() {

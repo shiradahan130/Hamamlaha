@@ -51,7 +51,7 @@ public class UsersListActivity extends AppCompatActivity {
             public void onUserClick(User user) {
                 // Handle user click
                 Log.d(TAG, "User clicked: " + user);
-                Intent intent = new Intent(UsersListActivity.this, updateDetailsActivity.class);
+                Intent intent = new Intent(UsersListActivity.this, UserProfileActivity.class);
                 intent.putExtra("USER_UID", user.getId());
                 startActivity(intent);
             }

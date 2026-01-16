@@ -1,5 +1,6 @@
 package com.example.hamamlaha.screens;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,16 @@ public class updateDetailsActivity extends AppCompatActivity implements View.OnC
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btn = findViewById(R.id.goBack);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(updateDetailsActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
         });
 
 

@@ -28,7 +28,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
 
     private EditText etUserFirstName, etUserLastName, etUserEmail, etUserPhone, etUserPassword;
     private TextView tvUserDisplayName, tvUserDisplayEmail;
-    private Button btnUpdateProfile, btnSignOut, goBack;
+    private Button btnSignOut;
     private View adminBadge;
     String selectedUid;
     User selectedUser;
@@ -58,8 +58,8 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserProfileActivity.this, updateDetailsActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(UserProfileActivity.this, updateDetailsActivity.class);
+                startActivity(intent1);
             }
         });
 
@@ -83,11 +83,8 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         etUserPassword = findViewById(R.id.et_user_password);
         tvUserDisplayName = findViewById(R.id.tv_user_display_name);
         tvUserDisplayEmail = findViewById(R.id.tv_user_display_email);
-        btnUpdateProfile = findViewById(R.id.btn_edit_profile);
         btnSignOut = findViewById(R.id.btn_sign_out);
         adminBadge = findViewById(R.id.admin_badge);
-
-        btnUpdateProfile.setOnClickListener(this);
         btnSignOut.setOnClickListener(this);
 
 
@@ -146,7 +143,6 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         } else {
             etUserEmail.setEnabled(true);
             etUserPassword.setEnabled(true);
-            btnUpdateProfile.setVisibility(View.VISIBLE);
         }
     }
 

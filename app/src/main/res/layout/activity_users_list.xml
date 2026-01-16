@@ -136,15 +136,9 @@
                         android:visibility="gone" />
 
                 </FrameLayout>
+
+
             </com.google.android.material.card.MaterialCardView>
-
-            <!-- פס תחתון -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="40dp"
-                android:background="#ff0084" />
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

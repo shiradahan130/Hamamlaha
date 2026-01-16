@@ -7,4 +7,43 @@
     android:layout_height="match_parent"
     tools:context=".screens.TorActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="#ff0084"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:paddingVertical="8dp"
+                android:src="@drawable/hlogo" />
+
+            <Button
+                android:id="@+id/goBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="➜" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
