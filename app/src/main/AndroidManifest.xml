@@ -11,12 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hamamlaha"
-        tools:targetApi="31">
+        tools:targetApi="35">
         <activity
-            android:name=".screens.item_dayActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.DayModelActivity"
+            android:name=".screens.MainActivity2"
             android:exported="false" />
         <activity
             android:name=".screens.UsersListActivity"
@@ -28,7 +25,7 @@
             android:name=".screens.SignoutActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.HairActivity"
+            android:name=".screens.LandingActivity"
             android:exported="false" />
         <activity
             android:name=".screens.PedicureActivity"
@@ -61,7 +58,7 @@
             android:name=".screens.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.LandingActivity"
+            android:name=".screens.HairActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -271,14 +271,13 @@
                         app:boxCornerRadiusBottomStart="12dp"
                         app:boxCornerRadiusBottomEnd="12dp"
                         app:passwordToggleEnabled="true"
-                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                        app:helperText="Leave blank to keep current password">
+                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_user_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="New Password"
+                            android:hint="Password"
                             android:inputType="textPassword" />
 
                     </com.google.android.material.textfield.TextInputLayout>
