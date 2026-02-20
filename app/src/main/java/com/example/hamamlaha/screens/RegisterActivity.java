@@ -131,7 +131,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void createUserInDatabase(User user) {
-        DatabaseService.getInstance().createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {
+        DatabaseService.getInstance().createNewUser(user,
+                new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void object) {
                 SharedPreferencesUtil.saveUser(RegisterActivity.this, user);

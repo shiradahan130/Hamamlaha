@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="35">
         <activity
+            android:name=".screens.StepFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.PickCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.MainActivity2"
             android:exported="false" />
         <activity
@@ -52,13 +58,10 @@
             android:name=".screens.updateDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.TorActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.HairActivity"
+            android:name=".screens.AppointmentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

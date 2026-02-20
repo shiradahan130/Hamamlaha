@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="StepStyle">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:background">@drawable/step_background</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>
