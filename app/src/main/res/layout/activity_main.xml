@@ -22,15 +22,15 @@
             android:background="#ff0084"
             android:layoutDirection="rtl">
 
-            <!-- כפתור פרופיל -->
-            <ImageButton
-                android:id="@+id/bnt_UserProfile"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="start|center_vertical"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/baseline_account_circle_24" />
+            <Button
+                android:id="@+id/goBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="➜" />
 
             <!-- לוגו -->
             <ImageView
@@ -42,6 +42,7 @@
                 android:scaleType="fitCenter"
                 android:paddingVertical="8dp"
                 android:src="@drawable/hlogo" />
+
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -64,7 +65,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/nootaj"
                 android:text="גלריית תמונות"

@@ -6,15 +6,16 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.PickCategoryActivity">
+    tools:context=".screens.Step3Activity">
 
-    <!-- AppBar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
+    <!-- תוכן עליון -->
+    <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomButtons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -22,7 +23,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:background="#ff0084">
+            android:background="#ff0084"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -36,39 +38,28 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:fontFamily="@font/nootaj"
+            android:gravity="center"
+            android:text="אופציות לתורים אפשריים"
+            android:textSize="37sp" />
 
-    <!-- כותרת -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/nootaj"
-        android:text="באיזה שירות מעוניינים?"
-        android:gravity="center"
-        android:textSize="37sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <!-- RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategories"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        android:layout_marginTop="60dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
 
-    <!-- Bottom Bar -->
+    <!-- אזור תחתון -->
     <LinearLayout
-        android:id="@+id/bottomBar"
+        android:id="@+id/bottomButtons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -76,13 +67,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- כפתורים -->
+        <!-- כפתורים בשורה -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="40dp"
             android:orientation="horizontal"
+            android:layout_marginBottom="30dp"
             android:padding="16dp">
 
             <Button
@@ -101,9 +92,10 @@
                 android:backgroundTint="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
                 android:text="המשך" />
+
         </LinearLayout>
 
-        <!-- פס ורוד תחתון -->
+        <!-- פס ורוד מתחת לכפתורים -->
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"

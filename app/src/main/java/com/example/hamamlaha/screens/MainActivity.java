@@ -3,7 +3,6 @@ package com.example.hamamlaha.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -31,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ImageButton button00 = findViewById(R.id.bnt_UserProfile);
+        ImageButton button00 = findViewById(R.id.goBack);
         button00.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LaserActivity.class);
+                Intent intent = new Intent(MainActivity.this, Step2LaserActivity.class);
                 startActivity(intent);
             }
         });
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NailsActivity.class);
+                Intent intent = new Intent(MainActivity.this, Step2NailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EyebrowsActivity.class);
+                Intent intent = new Intent(MainActivity.this, Step2EyebrowsActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EyelashesActivity.class);
+                Intent intent = new Intent(MainActivity.this, Step2EyelashesActivity.class);
                 startActivity(intent);
             }
         });
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PedicureActivity.class);
+                Intent intent = new Intent(MainActivity.this, Step2PedicureActivity.class);
                 startActivity(intent);
             }
         });

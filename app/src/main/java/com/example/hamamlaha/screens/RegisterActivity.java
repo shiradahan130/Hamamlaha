@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onCompleted(Void object) {
                 SharedPreferencesUtil.saveUser(RegisterActivity.this, user);
-                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity2.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
             }

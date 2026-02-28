@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.Step2HairActivity">
+
+    <!-- פס עליון + תמונה -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="#ff0084"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:paddingVertical="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/hlogo" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="80dp"
+                android:fontFamily="@font/nootaj"
+                android:text="איזה שירות תרצו?"
+                android:textSize="37sp" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/btn_ahlaka"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="90dp"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="החלקה"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/btn_peen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="פן"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/btn_tesporet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="90dp"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="תספורת"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/btn_zeva"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="100dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="צבע"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/btn_gvanim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="90dp"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="גוונים"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/btn_tisroket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="100dp"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:layoutDirection="rtl"
+                        android:text="תסרוקת"
+                        android:textSize="20sp" />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="150dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btngoback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ff0084"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:text="חזור" />
+
+                <Button
+                    android:id="@+id/btncontinue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ff0084"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:text="המשך" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="52dp"
+                android:background="#ff0084"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

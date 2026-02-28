@@ -2,6 +2,7 @@ package com.example.hamamlaha.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -12,38 +13,32 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
 
-public class MainActivity2 extends AppCompatActivity {
-Button btn_gallery, btn_tor, bnt_profile;
+public class Step2EyebrowsActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_step2eyebrows);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        btn_gallery = findViewById(R.id.bnt_gallery);
-        btn_tor = findViewById(R.id.bnt_tor);
-        bnt_profile = findViewById(R.id.bnt_profile);
 
-
-        btn_gallery.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+        // --- כפתור חזרה ---
+        Button button = findViewById(R.id.btngoback);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(Step2EyebrowsActivity.this, PickCategoryActivity.class);
+            startActivity(intent);
+        });
+        // --- כפתור המשך ---
+        Button button1 = findViewById(R.id.btncontinue);
+        button1.setOnClickListener(view -> {
+            Intent intent = new Intent(Step2EyebrowsActivity.this, Step3Activity.class);
             startActivity(intent);
         });
 
-            btn_tor.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity2.this, PickCategoryActivity.class);
-                startActivity(intent);
-        });
-
-        bnt_profile.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity2.this, UserProfileActivity.class);
-            startActivity(intent);
-        });
     }
 }
-

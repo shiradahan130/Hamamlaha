@@ -37,7 +37,7 @@ public class PickCategoryActivity extends AppCompatActivity {
         // ----------------------------
         RecyclerView rvCategories = findViewById(R.id.rvCategories);
 
-        // Grid עם 3 ריבועים בשורה
+        // Grid עם 2 ריבועים בשורה
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         rvCategories.setLayoutManager(gridLayoutManager);
 
@@ -52,11 +52,19 @@ public class PickCategoryActivity extends AppCompatActivity {
 
         rvCategories.setAdapter(adapter);
 
+
         // --- כפתור חזרה ---
-        Button button = findViewById(R.id.goBack);
+        Button button = findViewById(R.id.btngoback);
         button.setOnClickListener(view -> {
-            Intent intent = new Intent(PickCategoryActivity.this, MainActivity.class);
+            Intent intent = new Intent(PickCategoryActivity.this, MainActivity2.class);
             startActivity(intent);
+        });
+
+        // --- כפתור המשך ---
+            Button button1 = findViewById(R.id.btncontinue);
+            button1.setOnClickListener(view -> {
+                Intent intent = new Intent(PickCategoryActivity.this, Step2HairActivity.class);
+                startActivity(intent);
         });
     }
 }

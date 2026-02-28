@@ -13,26 +13,31 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
 
-public class NailsActivity extends AppCompatActivity {
+public class Step2PedicureActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_nails);
+        setContentView(R.layout.activity_step2pedicure);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button button = findViewById(R.id.goBack);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(NailsActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        // --- כפתור חזרה ---
+        Button button = findViewById(R.id.btngoback);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(Step2PedicureActivity.this, PickCategoryActivity.class);
+            startActivity(intent);
         });
+        // --- כפתור המשך ---
+        Button button1 = findViewById(R.id.btncontinue);
+        button1.setOnClickListener(view -> {
+            Intent intent = new Intent(Step2PedicureActivity.this, Step3Activity.class);
+            startActivity(intent);
+        });
+
     }
 }

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.NailsActivity">
+    tools:context=".screens.Step2LaserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,41 +38,32 @@
                     android:paddingVertical="8dp"
                     android:src="@drawable/hlogo" />
 
-                <Button
-                    android:id="@+id/goBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/transparent"
-                    android:layout_gravity="end"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:text="➜" />
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="80dp"
-            android:layout_marginTop="150dp"
             android:fontFamily="@font/nootaj"
-            android:text="איזה שירות תרצו?"
+            android:text="איזורים ללייזר"
             android:textSize="37sp" />
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
                 <RadioButton
-                    android:id="@+id/btn_miloylak"
+                    android:id="@+id/btn_yadaeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
@@ -80,17 +71,17 @@
                     android:layout_marginBottom="40dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
-                    android:text="מילוי" />
+                    android:text="ידיים" />
 
                 <RadioButton
-                    android:id="@+id/btn_bneea"
+                    android:id="@+id/btn_raglaeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
-                    android:text="בנייה" />
+                    android:text="רגליים" />
             </TableRow>
 
             <TableRow
@@ -98,7 +89,7 @@
                 android:layout_height="match_parent" >
 
                 <RadioButton
-                    android:id="@+id/btn_lakGel"
+                    android:id="@+id/btn_betshehi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
@@ -106,35 +97,75 @@
                     android:layout_marginBottom="40dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
-                    android:text="לק גל" />
+                    android:text="בת שחי" />
 
                 <RadioButton
-                    android:id="@+id/btn_zeuorim"
+                    android:id="@+id/btn_mefsaot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
                     android:layout_marginEnd="100dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
-                    android:text="ציורים" />
+                    android:text="מפשעה" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/btn_beten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:layout_marginEnd="90dp"
+                    android:textSize="20sp"
+                    android:text="בטן" />
+
+                <RadioButton
+                    android:id="@+id/btn_gav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:layout_marginEnd="100dp"
+                    android:textSize="20sp"
+                    android:text="גב" />
             </TableRow>
         </TableLayout>
 
-        <Button
-            android:id="@+id/btncontinue"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="120dp"
-            android:layout_marginTop="100dp"
-            android:fontFamily="@font/asakimboldwebfont"
-            android:backgroundTint="#ff0084"
-            android:text="המשך" />
+            android:gravity="center"
+            android:layout_marginTop="190dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btngoback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ff0084"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:text="חזור" />
+
+            <Button
+                android:id="@+id/btncontinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ff0084"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:text="המשך" />
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="46dp"
             android:background="#ff0084" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         SharedPreferencesUtil.saveUser(LoginActivity.this, user);
 
                         Intent mainIntent =
-                                new Intent(LoginActivity.this, MainActivity.class);
+                                new Intent(LoginActivity.this, MainActivity2.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(mainIntent);
                     }

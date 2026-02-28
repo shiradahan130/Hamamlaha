@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="35">
         <activity
+            android:name=".screens.Step3Activity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.Step2HairActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.StepFragmentActivity"
             android:exported="false" />
         <activity
@@ -31,19 +37,16 @@
             android:name=".screens.SignoutActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.LandingActivity"
+            android:name=".screens.Step2PedicureActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.PedicureActivity"
+            android:name=".screens.Step2EyelashesActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.EyelashesActivity"
+            android:name=".screens.Step2EyebrowsActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.EyebrowsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.NailsActivity"
+            android:name=".screens.Step2NailsActivity"
             android:exported="false" />
         <activity
             android:name=".screens.LoginActivity"
@@ -52,7 +55,7 @@
             android:name=".screens.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.LaserActivity"
+            android:name=".screens.Step2LaserActivity"
             android:exported="false" />
         <activity
             android:name=".screens.updateDetailsActivity"
@@ -61,7 +64,7 @@
             android:name=".screens.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.AppointmentActivity"
+            android:name=".screens.LandingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

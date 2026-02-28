@@ -32,7 +32,7 @@ public class LandingActivity extends AppCompatActivity {
 
         user= SharedPreferencesUtil.getUser(LandingActivity.this);
         if(SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {
-            Intent intent = new Intent(LandingActivity.this, MainActivity.class);
+            Intent intent = new Intent(LandingActivity.this, MainActivity2.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
