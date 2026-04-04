@@ -5,48 +5,46 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ff0084"
     tools:context=".screens.LandingActivity">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/login"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#ffff"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:text="הרשמה"
+        android:textColor="#ff0084"
+        android:textSize="15pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#ffff"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:text="התחברות"
+        android:textColor="#ff0084"
+        android:textSize="15pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#ff0084">
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logohmamlaha" />
 
-        <Button
-            android:id="@+id/login"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:textSize="15pt"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="100dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#ffff"
-            android:textColor="#ff0084"
-            android:text="הרשמה"
-            android:fontFamily="@font/asakimboldwebfont"
-            />
-
-        <Button
-            android:id="@+id/signUp"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:textSize="15pt"
-            android:text="התחברות"
-            android:layout_gravity="center"
-            android:backgroundTint="#ffff"
-            android:textColor="#ff0084"
-            android:layout_marginBottom="98dp"
-            android:fontFamily="@font/asakimboldwebfont"/>
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_marginTop="135dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            app:srcCompat="@drawable/logohmamlaha" />
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

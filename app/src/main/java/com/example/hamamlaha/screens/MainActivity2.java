@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.hamamlaha.R;
 
 public class MainActivity2 extends AppCompatActivity {
-Button btn_gallery, btn_tor, bnt_profile;
+Button bnt_gallery, btn_tor, bnt_profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +25,12 @@ Button btn_gallery, btn_tor, bnt_profile;
             return insets;
         });
 
-        btn_gallery = findViewById(R.id.bnt_gallery);
+        bnt_gallery = findViewById(R.id.bnt_gallery);
         btn_tor = findViewById(R.id.bnt_tor);
         bnt_profile = findViewById(R.id.bnt_profile);
 
 
-        btn_gallery.setOnClickListener(v -> {
+        bnt_gallery.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity2.this, MainActivity.class);
             startActivity(intent);
         });

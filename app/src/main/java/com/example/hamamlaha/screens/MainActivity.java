@@ -3,6 +3,7 @@ package com.example.hamamlaha.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -30,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ImageButton button00 = findViewById(R.id.goBack);
-        button00.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(intent);
-            }
+        // --- כפתור חזרה ---
+        Button button = findViewById(R.id.goBack);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(intent);
         });
 
         ImageButton button0 = findViewById(R.id.imageBtnhair);

@@ -19,9 +19,6 @@
             android:name=".screens.Step2HairActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.StepFragmentActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.PickCategoryActivity"
             android:exported="false" />
         <activity
@@ -65,6 +62,9 @@
             android:exported="false" />
         <activity
             android:name=".screens.LandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.HairActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

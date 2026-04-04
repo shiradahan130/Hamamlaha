@@ -49,7 +49,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserProfileActivity.this, MainActivity.class);
+                Intent intent = new Intent(UserProfileActivity.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
