@@ -43,28 +43,43 @@ public class PickCategoryActivity extends AppCompatActivity {
 
         // Adapter עם callback ללחיצה
         CategoryAdapter adapter = new CategoryAdapter(category -> {
-            // מה קורה כשנלחץ ריבוע
-            // נעבור לשלב הבא של התרומה
-            Intent intent = new Intent(PickCategoryActivity.this, MainActivity.class);
-            intent.putExtra("selectedCategory", category.name()); // שולחים את שם הקטגוריה
+
+            Intent intent;
+
+            switch (category) {
+                case HAIR:
+                    intent = new Intent(PickCategoryActivity.this, Step2HairActivity.class);
+                    break;
+
+                case NAILS:
+                    intent = new Intent(PickCategoryActivity.this, Step2NailsActivity.class);
+                    break;
+
+                case EYELASHES:
+                    intent = new Intent(PickCategoryActivity.this, Step2EyelashesActivity.class);
+                    break;
+
+                case LASER:
+                    intent = new Intent(PickCategoryActivity.this, Step2LaserActivity.class);
+                    break;
+
+                case EYEBROWS:
+                    intent = new Intent(PickCategoryActivity.this, Step2EyebrowsActivity.class);
+                    break;
+
+                case PEDICUR:
+                    intent = new Intent(PickCategoryActivity.this, Step2PedicureActivity.class);
+                    break;
+
+                default:
+                    intent = new Intent(PickCategoryActivity.this, MainActivity.class);
+                    break;
+            }
+
             startActivity(intent);
         });
 
         rvCategories.setAdapter(adapter);
 
-
-        // --- כפתור חזרה ---
-        Button button = findViewById(R.id.btngoback);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(PickCategoryActivity.this, MainActivity2.class);
-            startActivity(intent);
-        });
-
-        // --- כפתור המשך ---
-            Button button1 = findViewById(R.id.btncontinue);
-            button1.setOnClickListener(view -> {
-                Intent intent = new Intent(PickCategoryActivity.this, Step2HairActivity.class);
-                startActivity(intent);
-        });
     }
 }

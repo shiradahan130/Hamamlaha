@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Step2NailsActivity.class);
+                Intent intent = new Intent(MainActivity.this, NailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Step2EyelashesActivity.class);
+                Intent intent = new Intent(MainActivity.this, EyelashesActivity.class);
                 startActivity(intent);
             }
         });
