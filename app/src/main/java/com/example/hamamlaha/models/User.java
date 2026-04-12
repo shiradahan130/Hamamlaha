@@ -2,85 +2,55 @@ package com.example.hamamlaha.models;
 
 import androidx.annotation.NonNull;
 
-public class User
-{
+public class User {
     public String fname;
     public String lname;
     public String id;
     public String email;
     public String password;
     public String phone;
-
     public boolean isAdmin;
+    public String adminCategory; // null = super admin, "HAIR" / "NAILS" וכו' = עובדת
 
     public User() {
     }
 
-    public User(String fname, String lname, String id, String email, String password, String phone, boolean isAdmin) {
+    public User(String fname, String lname, String id, String email, String password, String phone, boolean isAdmin, String adminCategory) {
         this.fname = fname;
         this.lname = lname;
         this.id = id;
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.isAdmin = false;
+        this.isAdmin = isAdmin;
+        this.adminCategory = adminCategory;
     }
 
-    public String getFname() {
-        return fname;
-    }
+    public String getFname() { return fname; }
+    public void setFname(String fname) { this.fname = fname; }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
+    public String getLname() { return lname; }
+    public void setLname(String lname) { this.lname = lname; }
 
-    public String getLname() {
-        return lname;
-    }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getId() {
-        return id;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public String getEmail() {
-        return email;
-    }
+    public boolean isAdmin() { return isAdmin; }
+    public void setAdmin(boolean admin) { isAdmin = admin; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getAdminCategory() { return adminCategory; }
+    public void setAdminCategory(String adminCategory) { this.adminCategory = adminCategory; }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
+    public String getFullName() { return this.fname + " " + this.lname; }
 
     @NonNull
     @Override
@@ -93,11 +63,7 @@ public class User
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", isAdmin=" + isAdmin +
+                ", adminCategory='" + adminCategory + '\'' +
                 '}';
     }
-
-    public String getFullName(){
-        return this.fname+this.lname;
-    }
-
 }

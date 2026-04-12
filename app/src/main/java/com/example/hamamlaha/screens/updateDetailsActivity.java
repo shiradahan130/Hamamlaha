@@ -20,7 +20,8 @@ import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.example.hamamlaha.utils.Validator;
 
-public class updateDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class updateDetailsActivity extends BaseActivity implements View.OnClickListener {
+
     private static final String TAG = "updateDetailsActivity";
         private EditText  etFirstName, etLastName, etEmail, etPhoneNumber, etPassword;
     private Button btnUpdateProfile;

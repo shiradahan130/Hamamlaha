@@ -8,39 +8,30 @@
     android:layout_height="match_parent"
     tools:context=".screens.UsersListActivity">
 
-    <!-- ===== פס עליון קבוע ===== -->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:background="#ff0084"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:paddingVertical="8dp"
-                android:src="@drawable/hlogo" />
+            android:layout_height="50dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="">
 
             <Button
                 android:id="@+id/goBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
                 android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="start"
+                android:textColor="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
-                android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:text="➜" />
 
         </androidx.appcompat.widget.Toolbar>

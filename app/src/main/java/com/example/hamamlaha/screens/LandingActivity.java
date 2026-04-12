@@ -15,7 +15,13 @@ import com.example.hamamlaha.R;
 import com.example.hamamlaha.models.User;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends BaseActivity {
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false; // לא צריך Drawer
+    }
+
 
     User user;
 

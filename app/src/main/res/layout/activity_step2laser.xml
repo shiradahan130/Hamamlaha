@@ -13,36 +13,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- פס עליון + תמונה -->
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:background="#ff0084"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:paddingVertical="8dp"
-                    android:src="@drawable/hlogo" />
-
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -60,9 +30,9 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_yadaeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,7 +43,7 @@
                     android:textSize="20sp"
                     android:text="ידיים" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_raglaeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,9 +56,9 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_betshehi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,7 +69,7 @@
                     android:textSize="20sp"
                     android:text="בת שחי" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_mefsaot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,9 +82,9 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_beten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,7 +94,7 @@
                     android:textSize="20sp"
                     android:text="בטן" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/btn_gav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

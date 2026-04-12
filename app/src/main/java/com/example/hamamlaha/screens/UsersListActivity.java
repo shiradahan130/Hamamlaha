@@ -24,7 +24,7 @@ import com.example.hamamlaha.service.DatabaseService;
 
 import java.util.List;
 
-public class UsersListActivity extends AppCompatActivity {
+public class UsersListActivity extends BaseActivity {
 
     private static final String TAG = "UsersListActivity";
     private UserAdapter userAdapter;

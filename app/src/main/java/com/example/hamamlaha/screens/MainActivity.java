@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Step2LaserActivity.class);
+                Intent intent = new Intent(MainActivity.this, LaserActivity.class);
                 startActivity(intent);
             }
         });

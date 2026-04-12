@@ -13,6 +13,21 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="35">
         <activity
+            android:name=".screens.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.Step5Activity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.Step4Activity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.LaserActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.EyelashesActivity"
             android:exported="false" />
         <activity
@@ -28,7 +43,7 @@
             android:name=".screens.Step2EyebrowsActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.MainActivity2"
+            android:name=".screens.MainActivity"
             android:exported="false" />
         <activity
             android:name=".screens.UsersListActivity"
@@ -40,7 +55,7 @@
             android:name=".screens.SignoutActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.MainActivity"
+            android:name=".screens.PickCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".screens.Step2HairActivity"
@@ -67,10 +82,10 @@
             android:name=".screens.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.LandingActivity"
+            android:name=".screens.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".screens.PickCategoryActivity"
+            android:name=".screens.LandingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

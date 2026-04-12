@@ -2,7 +2,6 @@ package com.example.hamamlaha.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,12 @@ import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.example.hamamlaha.utils.Validator;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false;
+    }
 
     private EditText etEmail, etPassword;
     private Button btnLogin, btngoback;
@@ -37,13 +41,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return insets;
         });
 
-        /// get the views
         etEmail = findViewById(R.id.et_login_email);
         etPassword = findViewById(R.id.et_login_password);
         btnLogin = findViewById(R.id.btn_login_login);
         btngoback = findViewById(R.id.goBack);
 
-        /// set listeners
         btnLogin.setOnClickListener(this);
 
         btngoback.setOnClickListener(v -> {
@@ -54,9 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-
         if (v.getId() == btnLogin.getId()) {
-
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
 
@@ -68,10 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
-    /// Validate input
     private boolean checkInput(String email, String password) {
-
         if (!Validator.isEmailValid(email)) {
             etEmail.setError("Invalid email address");
             etEmail.requestFocus();
@@ -87,10 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return true;
     }
 
-
-    /// Login function
     private void loginUser(String email, String password) {
-
         DatabaseService.getInstance().getUserByEmailAndPassword(email, password,
                 new DatabaseService.DatabaseCallback<User>() {
                     @Override
@@ -102,10 +96,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         SharedPreferencesUtil.saveUser(LoginActivity.this, user);
 
-                        Intent mainIntent =
-                                new Intent(LoginActivity.this, MainActivity2.class);
-                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(mainIntent);
+                        Intent intent;
+
+                        // אם אדמין — מעבר לדף ניהול
+                        if (user.isAdmin()) {
+                            intent = new Intent(LoginActivity.this, AdminActivity.class);
+                        } else {
+                            intent = new Intent(LoginActivity.this, MainActivity2.class);
+                        }
+
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                     }
 
                     @Override

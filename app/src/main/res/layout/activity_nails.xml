@@ -13,35 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:background="#ff0084"
+            android:layout_height="50dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:paddingVertical="8dp"
-                android:src="@drawable/hlogo" />
 
             <Button
                 android:id="@+id/goBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
+                android:textColor="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
-                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:text="➜" />
 
@@ -70,7 +60,7 @@
                 android:gravity="center_vertical"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="5dp"
                 android:text="ציפורניים"
                 android:textColor="#ff0084"
                 android:textStyle="bold" />
@@ -80,6 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp">
 
                 <LinearLayout
@@ -93,7 +84,7 @@
                         android:id="@+id/imageView1"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsred6"/>
@@ -102,7 +93,7 @@
                         android:id="@+id/imageView2"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsred5"/>
 
@@ -172,7 +163,7 @@
                         android:id="@+id/imageView7"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsorange1"/>
@@ -181,7 +172,7 @@
                         android:id="@+id/imageView8"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsorange2"/>
 
@@ -251,7 +242,7 @@
                         android:id="@+id/imageView13"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsyellow1"/>
@@ -260,7 +251,7 @@
                         android:id="@+id/imageView14"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsyellow2"/>
 
@@ -330,7 +321,7 @@
                         android:id="@+id/imageView19"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsgreen4"/>
@@ -339,7 +330,7 @@
                         android:id="@+id/imageView20"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsgreen2"/>
 
@@ -409,7 +400,7 @@
                         android:id="@+id/imageView25"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsblue4"/>
@@ -418,7 +409,7 @@
                         android:id="@+id/imageView26"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailsblue2"/>
 
@@ -488,18 +479,18 @@
                         android:id="@+id/imageView31"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst1"/>
+                        android:src="@drawable/nailspurple6"/>
 
                     <ImageView
                         android:id="@+id/imageView32"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst2"/>
+                        android:src="@drawable/nailspurple5"/>
 
                 </LinearLayout>
                 <LinearLayout
@@ -515,7 +506,7 @@
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst1"/>
+                        android:src="@drawable/nailspurple3"/>
 
                     <ImageView
                         android:id="@+id/imageView34"
@@ -523,7 +514,7 @@
                         android:layout_height="170dp"
                         android:layout_marginStart="15dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst2"/>
+                        android:src="@drawable/nailspurple4"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -536,7 +527,7 @@
                         android:layout_height="170dp"
                         android:layout_marginEnd="15dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst3"/>
+                        android:src="@drawable/nailspurple2"/>
 
                     <ImageView
                         android:id="@+id/imageView36"
@@ -546,7 +537,7 @@
                         android:layout_marginBottom="20dp"
                         android:layout_marginEnd="15dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hairst4"/>
+                        android:src="@drawable/nailspurple1"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -567,7 +558,7 @@
                         android:id="@+id/imageView37"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginBottom="20dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailspink1"/>
@@ -576,7 +567,7 @@
                         android:id="@+id/imageView38"
                         android:layout_width="120dp"
                         android:layout_height="170dp"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginStart="10dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/nailspink3"/>
 
@@ -643,7 +634,18 @@
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="16sp"
                     android:gravity="center_vertical"
-                    android:text="לתמונות ומידע נוסף היכנסו לאינסטגרם שלנו"
+                    android:text="לתמונות ומידע נוסף היכנסו לאינסטגרם של הממלכה"
+                    android:textColor="#ff0084"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:text="כך תישארו מעודכנים ותראו איך הקסם קורה !"
                     android:textColor="#ff0084"
                     android:textStyle="bold" />
 
@@ -654,7 +656,7 @@
                         android:src="@drawable/instagram_icon" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/playitalic"

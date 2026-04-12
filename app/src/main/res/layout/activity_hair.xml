@@ -13,35 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:background="#ff0084"
+            android:layout_height="50dp"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:paddingVertical="8dp"
-                android:src="@drawable/hlogo" />
 
             <Button
                 android:id="@+id/goBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
+                android:textColor="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
-                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:text="➜" />
 
@@ -525,13 +515,24 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="16sp"
                     android:gravity="center_vertical"
-                    android:text="לתמונות ומידע נוסף היכנסו לאינסטגרם שלנו"
+                    android:text="לתמונות ומידע נוסף היכנסו לאינסטגרם של הממלכה"
+                    android:textColor="#ff0084"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:text="כך תישארו מעודכנים ותראו איך הקסם קורה !"
                     android:textColor="#ff0084"
                     android:textStyle="bold" />
 
@@ -542,7 +543,7 @@
                     android:src="@drawable/instagram_icon" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/playitalic"

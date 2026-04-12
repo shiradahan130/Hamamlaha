@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
 
-public class EyelashesActivity extends AppCompatActivity {
+public class EyelashesActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

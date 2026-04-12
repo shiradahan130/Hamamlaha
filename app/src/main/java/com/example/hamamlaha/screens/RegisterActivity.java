@@ -21,9 +21,16 @@ import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.example.hamamlaha.utils.Validator;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends BaseActivity implements View.OnClickListener{
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false; // לא צריך Drawer
+    }
+
     private EditText etEmail, etPassword, etFName, etLName, etPhone;
     private Button btnRegister, btngoback;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String uid = DatabaseService.getInstance().generateUserId();
 
         /// create a new user object
-        User user = new User(fName,lName, uid, email, password, phone, false);
+        User user = new User(fName, lName, uid, email, password, phone, false, null);
 
         DatabaseService.getInstance().checkIfEmailExists(email, new DatabaseService.DatabaseCallback<Boolean>() {
             @Override

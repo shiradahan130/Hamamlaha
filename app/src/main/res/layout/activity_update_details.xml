@@ -12,46 +12,34 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- פס עליון + תמונה -->
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:background="#ff0084"
+                android:layout_height="50dp"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:title="">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:paddingVertical="8dp"
-                    android:src="@drawable/hlogo" />
 
                 <Button
                     android:id="@+id/goBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
-                    android:layout_gravity="end"
+                    android:layout_gravity="start"
+                    android:textColor="#ff0084"
                     android:fontFamily="@font/asakimboldwebfont"
-                    android:textColor="@color/white"
                     android:textSize="20dp"
                     android:text="➜" />
 
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <TextView
             android:id="@+id/textView"

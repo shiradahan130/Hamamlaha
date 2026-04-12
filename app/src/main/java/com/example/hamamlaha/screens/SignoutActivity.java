@@ -15,7 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 
-public class SignoutActivity extends AppCompatActivity {
+public class SignoutActivity extends BaseActivity {
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false; // לא צריך Drawer
+    }
 
     private static final String TAG = "SignoutActivity";
 

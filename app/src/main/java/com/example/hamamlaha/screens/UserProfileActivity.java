@@ -22,7 +22,7 @@ import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.example.hamamlaha.utils.Validator;
 
-public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class UserProfileActivity extends BaseActivity {
 
     private static final String TAG = "UserProfileActivity";
 
@@ -83,24 +83,12 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         etUserPassword = findViewById(R.id.et_user_password);
         tvUserDisplayName = findViewById(R.id.tv_user_display_name);
         tvUserDisplayEmail = findViewById(R.id.tv_user_display_email);
-        btnSignOut = findViewById(R.id.btn_sign_out);
         adminBadge = findViewById(R.id.admin_badge);
-        btnSignOut.setOnClickListener(this);
 
 
         showUserProfile();
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.btn_edit_profile) {
-            updateUserProfile();
-            return;
-        }
-        if(v.getId() == R.id.btn_sign_out) {
-            signOut();
-        }
-    }
 
     private void showUserProfile() {
         // Get the user data from database

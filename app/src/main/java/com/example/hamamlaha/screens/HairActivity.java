@@ -20,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.hamamlaha.R;
 
 // @UnstableApi // הערה: קשור לווידאו
-public class HairActivity extends AppCompatActivity {
+public class HairActivity extends BaseActivity {
 
     // הגדרת הנגנים בהערה
     /*

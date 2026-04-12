@@ -3,19 +3,31 @@ package com.example.hamamlaha.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CalendarView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hamamlaha.R;
+import com.example.hamamlaha.models.SalonCategory;
 
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
-public class Step3Activity extends AppCompatActivity {
-    Calendar calendar;
+public class Step3Activity extends BaseActivity {
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false;
+    }
+
+    private CalendarView calendarView;
+
+    SalonCategory category;
+    String options;
+    int duration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +40,36 @@ public class Step3Activity extends AppCompatActivity {
             return insets;
         });
 
+        category = getIntent().getSerializableExtra("category", SalonCategory.class);
+        options = getIntent().getStringExtra("options");
+        duration = getIntent().getIntExtra("duration", 1);
+
+        calendarView = findViewById(R.id.calendarView);
+
+        // תאריך ברירת מחדל = היום
+        final String[] selectedDate = {new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                .format(new java.util.Date(calendarView.getDate()))};
+
+        // עדכון כשבוחרים תאריך
+        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            selectedDate[0] = dayOfMonth + "/" + (month + 1) + "/" + year;
+        });
+
         // --- כפתור חזרה ---
         Button button = findViewById(R.id.btngoback);
         button.setOnClickListener(view -> {
             Intent intent = new Intent(Step3Activity.this, Step2HairActivity.class);
             startActivity(intent);
         });
+
         // --- כפתור המשך ---
         Button button1 = findViewById(R.id.btncontinue);
         button1.setOnClickListener(view -> {
-            Intent intent = new Intent(Step3Activity.this, MainActivity2.class);
+            Intent intent = new Intent(Step3Activity.this, Step4Activity.class);
+            intent.putExtra("category", category);
+            intent.putExtra("options", options);
+            intent.putExtra("duration", duration);
+            intent.putExtra("date", selectedDate[0]);
             startActivity(intent);
         });
     }

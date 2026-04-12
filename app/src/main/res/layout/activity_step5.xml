@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface"
+    android:gravity="center_horizontal">
+
+    <!-- אייקון V ירוק -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_check_circle"
+        android:tint="@color/green_500"
+        android:contentDescription="תור נקבע" />
+
+    <!-- כותרת -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="התור נקבע בהצלחה!"
+        android:textSize="26sp"
+        android:fontFamily="@font/lilitaoneregular"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_marginBottom="32dp" />
+
+    <!-- כרטיס פרטי התור -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- שירות -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שירות"
+                android:textSize="13sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/lilitaoneregular"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- אופציות -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="אופציות"
+                android:textSize="13sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/lilitaoneregular"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- תאריך -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="תאריך"
+                android:textSize="13sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/lilitaoneregular"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- שעה -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שעה"
+                android:textSize="13sp"
+                android:textColor="#888888"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/lilitaoneregular"
+                android:textColor="?attr/colorOnSurface"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- כפתור חזרה לדף הבית -->
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#ff0084"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:text="חזרה לדף הבית" />
+
+</LinearLayout>

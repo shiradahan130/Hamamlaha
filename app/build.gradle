@@ -7,6 +7,10 @@ android {
     namespace 'com.example.hamamlaha'
     compileSdk 35
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.hamamlaha"
         minSdk 34

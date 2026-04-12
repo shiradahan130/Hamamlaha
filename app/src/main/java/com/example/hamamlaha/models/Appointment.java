@@ -8,7 +8,7 @@ public class Appointment {
     private String date;          // לדוגמה: 25/06/2025
     private String time;          // לדוגמה: 14:30
     private SalonCategory category;
-    private User user;
+    private String userId;
     private String status;        // PENDING / APPROVED / CANCELED
 
     // חובה ל-Firebase
@@ -19,14 +19,14 @@ public class Appointment {
                        String date,
                        String time,
                        SalonCategory category,
-                       User user,
+                       String userId,
                        String status) {
 
         this.appointmentId = appointmentId;
         this.date = date;
         this.time = time;
         this.category = category;
-        this.user = user;
+        this.userId = userId;
         this.status = status;
     }
 
@@ -62,12 +62,12 @@ public class Appointment {
         this.category = category;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {
@@ -86,7 +86,7 @@ public class Appointment {
                 ", date='" + date + '\'' +
                 ", time='" + time + '\'' +
                 ", category=" + category +
-                ", user=" + user +
+                ", userId=" + userId +
                 ", status='" + status + '\'' +
                 '}';
     }
