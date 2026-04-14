@@ -22,6 +22,10 @@ public class LandingActivity extends BaseActivity {
         return false; // לא צריך Drawer
     }
 
+    @Override
+    protected boolean hasToolbar() {
+        return false;
+    }
 
     User user;
 
@@ -36,9 +40,14 @@ public class LandingActivity extends BaseActivity {
             return insets;
         });
 
-        user= SharedPreferencesUtil.getUser(LandingActivity.this);
-        if(SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {
-            Intent intent = new Intent(LandingActivity.this, MainActivity2.class);
+        user = SharedPreferencesUtil.getUser(LandingActivity.this);
+        if (SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {
+            Intent intent;
+            if (user.isAdmin()) {
+                intent = new Intent(LandingActivity.this, AdminActivity.class);
+            } else {
+                intent = new Intent(LandingActivity.this, MainActivity2.class);
+            }
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }

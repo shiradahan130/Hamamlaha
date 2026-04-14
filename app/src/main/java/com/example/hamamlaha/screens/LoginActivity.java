@@ -2,6 +2,7 @@ package com.example.hamamlaha.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -94,11 +95,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             return;
                         }
 
+                        Log.d("LOGIN", "user: " + user.toString());
+                        Log.d("LOGIN", "isAdmin: " + user.isAdmin());
+
                         SharedPreferencesUtil.saveUser(LoginActivity.this, user);
 
                         Intent intent;
 
-                        // אם אדמין — מעבר לדף ניהול
                         if (user.isAdmin()) {
                             intent = new Intent(LoginActivity.this, AdminActivity.class);
                         } else {

@@ -16,6 +16,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,8 +46,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/nootaj"
             android:layout_gravity="center"
             android:text="עדכון פרטים"
@@ -214,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#ff0084"
-            android:layout_marginTop="60dp" />
+            android:layout_marginTop="100dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

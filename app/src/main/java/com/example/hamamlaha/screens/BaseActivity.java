@@ -1,7 +1,14 @@
 package com.example.hamamlaha.screens;
 
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.MetricAffectingSpan;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -10,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,7 +33,11 @@ public abstract class BaseActivity extends AppCompatActivity
     protected DrawerLayout drawerLayout;
 
     protected boolean hasSideMenu() {
-        return true; // ברירת מחדל – יש Drawer
+        return true;
+    }
+
+    protected boolean hasToolbar() {
+        return true;
     }
 
     @Override
@@ -33,16 +45,27 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         databaseService = DatabaseService.getInstance();
 
-        // טוען את ה-Base XML
+        // ✅ צביעת status bar בורוד תואם ל-Toolbar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(0xFFff0084);
+        }
+
         super.setContentView(R.layout.activity_base);
 
-        // Toolbar
         Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
-        // Drawer
+
+        if (!hasToolbar()) {
+            toolbar.setVisibility(View.GONE);
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().hide();
+            }
+        }
+
         drawerLayout = findViewById(R.id.nav_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
         if (hasSideMenu()) {
 
             if (getSupportActionBar() != null) {
@@ -61,7 +84,10 @@ public abstract class BaseActivity extends AppCompatActivity
             );
             drawerLayout.addDrawerListener(toggle);
             toggle.syncState();
-        } else{
+
+            setNavMenuFont(navigationView);
+
+        } else {
             drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             navigationView.setVisibility(View.GONE);
 
@@ -75,28 +101,65 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void setContentView(int layoutResID) {
-//        super.setContentView(layoutResID);
         setContentLayout(layoutResID);
     }
 
-    // 👇 מזריק את ה-layout של המסך לתוך Base
     protected void setContentLayout(int layoutResId) {
         FrameLayout contentFrame = findViewById(R.id.content_frame);
         getLayoutInflater().inflate(layoutResId, contentFrame, true);
     }
 
-    protected void navigateTo(Class<?> targetActivity) {
+    private void setNavMenuFont(NavigationView navigationView) {
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.asakimboldwebfont);
+        if (typeface == null) return;
 
+        Menu menu = navigationView.getMenu();
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem item = menu.getItem(i);
+
+            if (item.hasSubMenu()) {
+                for (int j = 0; j < item.getSubMenu().size(); j++) {
+                    applyFontToMenuItem(item.getSubMenu().getItem(j), typeface);
+                }
+            } else {
+                applyFontToMenuItem(item, typeface);
+            }
+        }
+    }
+
+    private void applyFontToMenuItem(MenuItem item, Typeface typeface) {
+        SpannableString spannableString = new SpannableString(item.getTitle());
+        spannableString.setSpan(new CustomTypefaceSpan(typeface), 0,
+                spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        item.setTitle(spannableString);
+    }
+
+    private static class CustomTypefaceSpan extends MetricAffectingSpan {
+        private final Typeface typeface;
+
+        CustomTypefaceSpan(Typeface typeface) {
+            this.typeface = typeface;
+        }
+
+        @Override
+        public void updateDrawState(TextPaint paint) {
+            paint.setTypeface(typeface);
+        }
+
+        @Override
+        public void updateMeasureState(TextPaint paint) {
+            paint.setTypeface(typeface);
+        }
+    }
+
+    protected void navigateTo(Class<?> targetActivity) {
         if (!this.getClass().equals(targetActivity)) {
             Intent intent = new Intent(this, targetActivity);
             startActivity(intent);
             finish();
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -104,43 +167,31 @@ public abstract class BaseActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
             navigateTo(MainActivity2.class);
-
         } else if (id == R.id.nav_user_profile) {
-
-          navigateTo(UserProfileActivity.class);
-
+            navigateTo(UserProfileActivity.class);
         } else if (id == R.id.nav_add_tor) {
-
             navigateTo(PickCategoryActivity.class);
-
         } else if (id == R.id.nav_gallery) {
-
             navigateTo(MainActivity.class);
-
-
         } else if (id == R.id.nav_signOut) {
-
             drawerLayout.closeDrawer(GravityCompat.START);
             showLogoutDialog();
         }
         return true;
     }
+
     private void showLogoutDialog() {
-
         new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Sign Out")
-                .setMessage("Are you sure you want to sign out?")
-                .setPositiveButton("Yes", (dialog, which) -> {
-
+                .setTitle("התנתקות")
+                .setMessage("את/ה בטוח/ה שאת/ה רוצה להתנתק?")
+                .setPositiveButton("כן", (dialog, which) -> {
                     SharedPreferencesUtil.signOutUser(this);
-
                     Intent intent = new Intent(this, LandingActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 })
-                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton("לא", (dialog, which) -> dialog.dismiss())
                 .show();
     }
 

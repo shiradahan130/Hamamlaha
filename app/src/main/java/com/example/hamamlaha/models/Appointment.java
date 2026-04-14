@@ -5,11 +5,12 @@ import androidx.annotation.NonNull;
 public class Appointment {
 
     private String appointmentId;
-    private String date;          // לדוגמה: 25/06/2025
-    private String time;          // לדוגמה: 14:30
+    private String date;
+    private String time;
     private SalonCategory category;
     private String userId;
-    private String status;        // PENDING / APPROVED / CANCELED
+    private String status;
+    private int duration; // אורך התור בשעות
 
     // חובה ל-Firebase
     public Appointment() {
@@ -21,13 +22,29 @@ public class Appointment {
                        SalonCategory category,
                        String userId,
                        String status) {
-
         this.appointmentId = appointmentId;
         this.date = date;
         this.time = time;
         this.category = category;
         this.userId = userId;
         this.status = status;
+        this.duration = 1; // ברירת מחדל - שעה אחת
+    }
+
+    public Appointment(String appointmentId,
+                       String date,
+                       String time,
+                       SalonCategory category,
+                       String userId,
+                       String status,
+                       int duration) {
+        this.appointmentId = appointmentId;
+        this.date = date;
+        this.time = time;
+        this.category = category;
+        this.userId = userId;
+        this.status = status;
+        this.duration = duration;
     }
 
     public String getAppointmentId() {
@@ -78,6 +95,14 @@ public class Appointment {
         this.status = status;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -88,6 +113,7 @@ public class Appointment {
                 ", category=" + category +
                 ", userId=" + userId +
                 ", status='" + status + '\'' +
+                ", duration=" + duration +
                 '}';
     }
 }

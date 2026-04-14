@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.adapter.CategoryAdapter;
+import com.example.hamamlaha.models.SalonCategory;
 
 public class PickCategoryActivity extends BaseActivity {
 
@@ -47,12 +48,20 @@ public class PickCategoryActivity extends BaseActivity {
 
             Intent intent;
 
+            // NAILS ו-PEDICUR - דילוג על שלב 2, ישירות ליומן
+            if (category == SalonCategory.NAILS || category == SalonCategory.PEDICUR) {
+                intent = new Intent(PickCategoryActivity.this, Step3Activity.class);
+                intent.putExtra("category", category);
+                intent.putExtra("options", category.getHebrewName());
+                intent.putExtra("duration", 1);
+                startActivity(intent);
+                return;
+            }
+
+            // שאר השירותים - עוברים לשלב 2
             switch (category) {
                 case HAIR:
                     intent = new Intent(PickCategoryActivity.this, Step2HairActivity.class);
-                    break;
-                case NAILS:
-                    intent = new Intent(PickCategoryActivity.this, Step2NailsActivity.class);
                     break;
                 case EYELASHES:
                     intent = new Intent(PickCategoryActivity.this, Step2EyelashesActivity.class);
@@ -62,9 +71,6 @@ public class PickCategoryActivity extends BaseActivity {
                     break;
                 case EYEBROWS:
                     intent = new Intent(PickCategoryActivity.this, Step2EyebrowsActivity.class);
-                    break;
-                case PEDICUR:
-                    intent = new Intent(PickCategoryActivity.this, Step2PedicureActivity.class);
                     break;
                 default:
                     intent = new Intent(PickCategoryActivity.this, MainActivity.class);

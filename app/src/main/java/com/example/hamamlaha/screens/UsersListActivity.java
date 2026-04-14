@@ -26,6 +26,11 @@ import java.util.List;
 
 public class UsersListActivity extends BaseActivity {
 
+    @Override
+    protected boolean hasSideMenu() {
+        return false; // לא צריך Drawer
+    }
+
     private static final String TAG = "UsersListActivity";
     private UserAdapter userAdapter;
     private TextView tvUserCount;

@@ -13,8 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.hamamlaha.ImageAdapter;
 import com.example.hamamlaha.R;
+import com.example.hamamlaha.adapter.ImageAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

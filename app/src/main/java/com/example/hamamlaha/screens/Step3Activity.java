@@ -46,6 +46,13 @@ public class Step3Activity extends BaseActivity {
 
         calendarView = findViewById(R.id.calendarView);
 
+        // ✅ מניעת בחירת תאריך מהעבר
+        calendarView.setMinDate(System.currentTimeMillis());
+
+        // ✅ הגבלת תאריך מקסימלי - עד 3 חודשים קדימה
+        long threeMonthsFromNow = System.currentTimeMillis() + (long)(90L * 24 * 60 * 60 * 1000);
+        calendarView.setMaxDate(threeMonthsFromNow);
+
         // תאריך ברירת מחדל = היום
         final String[] selectedDate = {new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 .format(new java.util.Date(calendarView.getDate()))};

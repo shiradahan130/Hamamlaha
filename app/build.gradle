@@ -49,10 +49,8 @@ dependencies {
     implementation 'androidx.media3:media3-exoplayer:1.3.1'
     implementation 'androidx.media3:media3-ui:1.3.1'
 
-    // Import the BoM for the Firebase platform
+    // Firebase
     implementation platform(libs.firebase.bom)
-
-    // Add the dependency for the Realtime Database library
     implementation libs.google.firebase.database
-
+    implementation 'com.google.firebase:firebase-auth'
 }

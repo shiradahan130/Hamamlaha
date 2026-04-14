@@ -24,12 +24,14 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
     private final Context context;
     private List<String> timeSlots;
     private List<String> availableSlots;
+    private List<String> partialSlots; // ← חדש: פנוי אבל לא ניתן להתחיל מכאן
     private final OnSlotClickListener listener;
 
     public TimeSlotsAdapter(Context context, List<String> timeSlots, List<String> bookedSlots, OnSlotClickListener listener) {
         this.context = context;
         this.timeSlots = new ArrayList<>(timeSlots);
         this.availableSlots = new ArrayList<>(timeSlots); // בהתחלה הכל פנוי
+        this.partialSlots = new ArrayList<>(); // ← חדש
         this.listener = listener;
     }
 
@@ -45,7 +47,8 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
     public void onBindViewHolder(@NonNull TimeSlotViewHolder holder, int position) {
         String time = timeSlots.get(position);
         boolean isAvailable = availableSlots.contains(time);
-        holder.bind(time, isAvailable);
+        boolean isPartial = partialSlots.contains(time); // ← חדש
+        holder.bind(time, isAvailable, isPartial); // ← עדכון
     }
 
     @Override
@@ -53,13 +56,11 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
         return timeSlots.size();
     }
 
-    public void updateBookedSlots(List<String> newBookedSlots) {
-        notifyDataSetChanged();
-    }
-
-    public void updateAvailableSlots(List<String> allSlots, List<String> newAvailableSlots) {
+    // עדכון עם שלושת הרשימות
+    public void updateAvailableSlots(List<String> allSlots, List<String> newAvailableSlots, List<String> newPartialSlots) {
         this.timeSlots = new ArrayList<>(allSlots);
         this.availableSlots = new ArrayList<>(newAvailableSlots);
+        this.partialSlots = new ArrayList<>(newPartialSlots); // ← חדש
         notifyDataSetChanged();
     }
 
@@ -72,26 +73,39 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
             this.binding = binding;
         }
 
-        public void bind(String time, boolean isAvailable) {
+        public void bind(String time, boolean isAvailable, boolean isPartial) {
             binding.tvItemTime.setText(time);
 
-            binding.ivStatusIcon.setImageResource(
-                    isAvailable ? R.drawable.ic_check_circle : R.drawable.ic_cancel
-            );
+            if (isAvailable) {
+                // ✅ פנוי לגמרי - וי ירוק, ניתן ללחוץ
+                binding.ivStatusIcon.setImageResource(R.drawable.ic_check_circle);
+                binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(context, R.color.green_500)));
+                binding.getRoot().setAlpha(1.0f);
+                binding.cardTimeSlot.setClickable(true);
+                binding.cardTimeSlot.setFocusable(true);
+                binding.cardTimeSlot.setOnClickListener(v -> listener.onSlotClick(time));
 
-            binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
-                    ContextCompat.getColor(context,
-                            isAvailable ? R.color.green_500 : R.color.red_400)
-            ));
+            } else if (isPartial) {
+                // ⚠️ שעה פנויה אבל לא ניתן להתחיל מכאן - סימן כתום, לא ניתן ללחוץ
+                binding.ivStatusIcon.setImageResource(R.drawable.ic_warning);
+                binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(context, R.color.orange_400)));
+                binding.getRoot().setAlpha(0.75f);
+                binding.cardTimeSlot.setClickable(false);
+                binding.cardTimeSlot.setFocusable(false);
+                binding.cardTimeSlot.setOnClickListener(null);
 
-            binding.getRoot().setAlpha(isAvailable ? 1.0f : 0.5f);
-
-            binding.cardTimeSlot.setClickable(isAvailable);
-            binding.cardTimeSlot.setFocusable(isAvailable);
-
-            binding.cardTimeSlot.setOnClickListener(v -> {
-                if (isAvailable) listener.onSlotClick(time);
-            });
+            } else {
+                // ❌ תפוס - איקס אדום, לא ניתן ללחוץ
+                binding.ivStatusIcon.setImageResource(R.drawable.ic_cancel);
+                binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
+                        ContextCompat.getColor(context, R.color.red_400)));
+                binding.getRoot().setAlpha(0.5f);
+                binding.cardTimeSlot.setClickable(false);
+                binding.cardTimeSlot.setFocusable(false);
+                binding.cardTimeSlot.setOnClickListener(null);
+            }
         }
     }
 }

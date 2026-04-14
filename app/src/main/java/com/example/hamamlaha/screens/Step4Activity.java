@@ -77,12 +77,20 @@ public class Step4Activity extends BaseActivity {
             @Override
             public void onCompleted(List<Appointment> allAppointments) {
 
+                Log.d("DEBUG", "total appointments from DB: " + allAppointments.size());
+                Log.d("DEBUG", "looking for date: '" + date + "'");
+                for (Appointment a : allAppointments) {
+                    Log.d("DEBUG", "appointment -> date: '" + a.getDate() + "' | time: '" + a.getTime() + "' | category: " + a.getCategory());
+                }
+
+                // תורים של אותה קטגוריה באותו תאריך
                 List<Appointment> categoryAppointments = allAppointments.stream()
                         .filter(appointment ->
                                 appointment.getDate().equals(date) &&
                                         (category == null || appointment.getCategory().equals(category)))
                         .collect(Collectors.toList());
 
+                // תורים של המשתמש הנוכחי באותו תאריך (כל קטגוריה)
                 List<Appointment> userAppointments = allAppointments.stream()
                         .filter(appointment ->
                                 appointment.getDate().equals(date) &&
@@ -91,18 +99,50 @@ public class Step4Activity extends BaseActivity {
 
                 bookedSlots.clear();
 
+                // סימון כל השעות שתור קיים תופס (לפי duration שלו)
                 for (Appointment appointment : categoryAppointments) {
-                    bookedSlots.add(appointment.getTime());
+                    int startIndex = allTimeSlots.indexOf(appointment.getTime());
+                    int appointmentDuration = appointment.getDuration();
+
+                    Log.d("DEBUG", "appointment time from DB: '" + appointment.getTime() + "', found at index: " + startIndex);
+
+                    if (startIndex >= 0) {
+                        for (int i = 0; i < appointmentDuration; i++) {
+                            if (startIndex + i < allTimeSlots.size()) {
+                                String slot = allTimeSlots.get(startIndex + i);
+                                if (!bookedSlots.contains(slot)) {
+                                    bookedSlots.add(slot);
+                                }
+                            }
+                        }
+                    }
                 }
 
+                // סימון שעות של המשתמש הנוכחי (כל קטגוריה)
                 for (Appointment appointment : userAppointments) {
-                    if (!bookedSlots.contains(appointment.getTime())) {
-                        bookedSlots.add(appointment.getTime());
+                    int startIndex = allTimeSlots.indexOf(appointment.getTime());
+                    int appointmentDuration = appointment.getDuration();
+                    if (startIndex >= 0) {
+                        for (int i = 0; i < appointmentDuration; i++) {
+                            if (startIndex + i < allTimeSlots.size()) {
+                                String slot = allTimeSlots.get(startIndex + i);
+                                if (!bookedSlots.contains(slot)) {
+                                    bookedSlots.add(slot);
+                                }
+                            }
+                        }
                     }
                 }
 
                 List<String> availableSlots = getAvailableSlots();
-                adapter.updateAvailableSlots(allTimeSlots, availableSlots);
+                List<String> partialSlots = getPartialSlots();  // ← חדש
+
+                adapter.updateAvailableSlots(allTimeSlots, availableSlots, partialSlots);  // ← עדכון
+
+                Log.d("DEBUG", "duration: " + duration);
+                Log.d("DEBUG", "booked slots: " + bookedSlots.toString());
+                Log.d("DEBUG", "available slots: " + availableSlots.toString());
+                Log.d("DEBUG", "partial slots: " + partialSlots.toString());  // ← חדש
             }
 
             @Override
@@ -112,9 +152,12 @@ public class Step4Activity extends BaseActivity {
         });
     }
 
+    // שעות שניתן להתחיל מהן תור מלא
     private List<String> getAvailableSlots() {
         List<String> available = new ArrayList<>();
-        for (int i = 0; i <= allTimeSlots.size() - duration; i++) {
+        for (int i = 0; i < allTimeSlots.size(); i++) {
+            if (i + duration > allTimeSlots.size()) break;
+
             boolean canBook = true;
             for (int j = 0; j < duration; j++) {
                 if (bookedSlots.contains(allTimeSlots.get(i + j))) {
@@ -125,6 +168,36 @@ public class Step4Activity extends BaseActivity {
             if (canBook) available.add(allTimeSlots.get(i));
         }
         return available;
+    }
+
+    // שעות שהשעה עצמה פנויה אבל אי אפשר להתחיל מהן (יש חסימה בטווח התור, או שנגמרות השעות)
+    private List<String> getPartialSlots() {
+        List<String> partial = new ArrayList<>();
+        for (int i = 0; i < allTimeSlots.size(); i++) {
+            String slot = allTimeSlots.get(i);
+
+            // אם השעה עצמה תפוסה - לא partial, אלא booked
+            if (bookedSlots.contains(slot)) continue;
+
+            // אם אין מספיק שעות עד סוף היום לתור המלא
+            if (i + duration > allTimeSlots.size()) {
+                partial.add(slot);
+                continue;
+            }
+
+            // בדוק אם יש שעה תפוסה בתוך טווח התור
+            boolean hasBlockInRange = false;
+            for (int j = 0; j < duration; j++) {
+                if (bookedSlots.contains(allTimeSlots.get(i + j))) {
+                    hasBlockInRange = true;
+                    break;
+                }
+            }
+            if (hasBlockInRange) {
+                partial.add(slot);
+            }
+        }
+        return partial;
     }
 
     private void showConfirmationDialog(String time) {
@@ -139,7 +212,7 @@ public class Step4Activity extends BaseActivity {
     private void createAppointment(String time) {
         String id = DatabaseService.getInstance().generateAppointmentId();
         String currentUserId = SharedPreferencesUtil.getUserId(this);
-        Appointment appointment = new Appointment(id, date, time, category, currentUserId, "PENDING");
+        Appointment appointment = new Appointment(id, date, time, category, currentUserId, "PENDING", duration);
         DatabaseService.getInstance().createNewAppointment(appointment, new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void v) {

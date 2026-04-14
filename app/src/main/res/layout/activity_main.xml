@@ -8,37 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".screens.MainActivity">
 
-    <!-- פס עליון קבוע -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="">
-
-            <Button
-                android:id="@+id/goBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:layout_gravity="start"
-                android:textColor="#ff0084"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:textSize="20dp"
-                android:text="➜" />
-
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
     <!-- תוכן גולל -->
     <ScrollView
         android:layout_width="match_parent"
@@ -57,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="80dp"
                 android:fontFamily="@font/nootaj"
                 android:text="גלריית תמונות"
                 android:textSize="37sp" />
@@ -70,7 +39,8 @@
 
                 <FrameLayout
                     android:layout_width="200dp"
-                    android:layout_height="200dp">
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtnhair"
@@ -94,7 +64,7 @@
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_marginStart="20dp">
+                    android:layout_marginStart="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtnlaser"
@@ -125,7 +95,8 @@
 
                 <FrameLayout
                     android:layout_width="200dp"
-                    android:layout_height="200dp">
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtnnails"
@@ -149,7 +120,7 @@
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_marginStart="20dp">
+                    android:layout_marginStart="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtneyebrows"
@@ -180,7 +151,8 @@
 
                 <FrameLayout
                     android:layout_width="200dp"
-                    android:layout_height="200dp">
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtneyelashes"
@@ -204,7 +176,7 @@
                 <FrameLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_marginStart="20dp">
+                    android:layout_marginStart="5dp">
 
                     <ImageButton
                         android:id="@+id/imageBtnpedicure"

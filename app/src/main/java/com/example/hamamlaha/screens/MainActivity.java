@@ -30,14 +30,6 @@ public class MainActivity extends BaseActivity {
             return insets;
         });
 
-
-        // --- כפתור חזרה ---
-        Button button = findViewById(R.id.goBack);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-            startActivity(intent);
-        });
-
         ImageButton button0 = findViewById(R.id.imageBtnhair);
         button0.setOnClickListener(new View.OnClickListener() {
             @Override

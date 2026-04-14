@@ -1,6 +1,7 @@
 package com.example.hamamlaha.models;
 
 import androidx.annotation.NonNull;
+import com.google.firebase.database.PropertyName;
 
 public class User {
     public String fname;
@@ -9,20 +10,20 @@ public class User {
     public String email;
     public String password;
     public String phone;
-    public boolean isAdmin;
-    public String adminCategory; // null = super admin, "HAIR" / "NAILS" וכו' = עובדת
+    private boolean admin;  // שונה ל-private
+    public String adminCategory;
 
     public User() {
     }
 
-    public User(String fname, String lname, String id, String email, String password, String phone, boolean isAdmin, String adminCategory) {
+    public User(String fname, String lname, String id, String email, String password, String phone, boolean admin, String adminCategory) {
         this.fname = fname;
         this.lname = lname;
         this.id = id;
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.isAdmin = isAdmin;
+        this.admin = admin;
         this.adminCategory = adminCategory;
     }
 
@@ -44,8 +45,11 @@ public class User {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
-    public boolean isAdmin() { return isAdmin; }
-    public void setAdmin(boolean admin) { isAdmin = admin; }
+    @PropertyName("admin")
+    public boolean isAdmin() { return admin; }
+
+    @PropertyName("admin")
+    public void setAdmin(boolean admin) { this.admin = admin; }
 
     public String getAdminCategory() { return adminCategory; }
     public void setAdminCategory(String adminCategory) { this.adminCategory = adminCategory; }
@@ -62,7 +66,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
-                ", isAdmin=" + isAdmin +
+                ", admin=" + admin +
                 ", adminCategory='" + adminCategory + '\'' +
                 '}';
     }
