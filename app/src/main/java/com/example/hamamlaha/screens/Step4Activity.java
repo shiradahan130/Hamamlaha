@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.hamamlaha.R;
@@ -26,6 +28,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Step4Activity extends BaseActivity {
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false;
+    }
 
     String options, date;
     SalonCategory category;
@@ -59,6 +66,12 @@ public class Step4Activity extends BaseActivity {
         TextView tvDate = findViewById(R.id.tv_selected_date);
         tvDate.setText(date);
 
+        Button btnGoBack = findViewById(R.id.btngoback);
+        btnGoBack.setOnClickListener(view -> {
+            Intent intent = new Intent(Step4Activity.this, Step3Activity.class);
+            startActivity(intent);
+        });
+
         RecyclerView rv = findViewById(R.id.rv_time_slots);
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TimeSlotsAdapter(this, allTimeSlots, bookedSlots, time -> {
@@ -83,14 +96,12 @@ public class Step4Activity extends BaseActivity {
                     Log.d("DEBUG", "appointment -> date: '" + a.getDate() + "' | time: '" + a.getTime() + "' | category: " + a.getCategory());
                 }
 
-                // תורים של אותה קטגוריה באותו תאריך
                 List<Appointment> categoryAppointments = allAppointments.stream()
                         .filter(appointment ->
                                 appointment.getDate().equals(date) &&
                                         (category == null || appointment.getCategory().equals(category)))
                         .collect(Collectors.toList());
 
-                // תורים של המשתמש הנוכחי באותו תאריך (כל קטגוריה)
                 List<Appointment> userAppointments = allAppointments.stream()
                         .filter(appointment ->
                                 appointment.getDate().equals(date) &&
@@ -99,7 +110,6 @@ public class Step4Activity extends BaseActivity {
 
                 bookedSlots.clear();
 
-                // סימון כל השעות שתור קיים תופס (לפי duration שלו)
                 for (Appointment appointment : categoryAppointments) {
                     int startIndex = allTimeSlots.indexOf(appointment.getTime());
                     int appointmentDuration = appointment.getDuration();
@@ -118,7 +128,6 @@ public class Step4Activity extends BaseActivity {
                     }
                 }
 
-                // סימון שעות של המשתמש הנוכחי (כל קטגוריה)
                 for (Appointment appointment : userAppointments) {
                     int startIndex = allTimeSlots.indexOf(appointment.getTime());
                     int appointmentDuration = appointment.getDuration();
@@ -135,14 +144,14 @@ public class Step4Activity extends BaseActivity {
                 }
 
                 List<String> availableSlots = getAvailableSlots();
-                List<String> partialSlots = getPartialSlots();  // ← חדש
+                List<String> partialSlots = getPartialSlots();
 
-                adapter.updateAvailableSlots(allTimeSlots, availableSlots, partialSlots);  // ← עדכון
+                adapter.updateAvailableSlots(allTimeSlots, availableSlots, partialSlots);
 
                 Log.d("DEBUG", "duration: " + duration);
                 Log.d("DEBUG", "booked slots: " + bookedSlots.toString());
                 Log.d("DEBUG", "available slots: " + availableSlots.toString());
-                Log.d("DEBUG", "partial slots: " + partialSlots.toString());  // ← חדש
+                Log.d("DEBUG", "partial slots: " + partialSlots.toString());
             }
 
             @Override
@@ -152,7 +161,6 @@ public class Step4Activity extends BaseActivity {
         });
     }
 
-    // שעות שניתן להתחיל מהן תור מלא
     private List<String> getAvailableSlots() {
         List<String> available = new ArrayList<>();
         for (int i = 0; i < allTimeSlots.size(); i++) {
@@ -170,22 +178,18 @@ public class Step4Activity extends BaseActivity {
         return available;
     }
 
-    // שעות שהשעה עצמה פנויה אבל אי אפשר להתחיל מהן (יש חסימה בטווח התור, או שנגמרות השעות)
     private List<String> getPartialSlots() {
         List<String> partial = new ArrayList<>();
         for (int i = 0; i < allTimeSlots.size(); i++) {
             String slot = allTimeSlots.get(i);
 
-            // אם השעה עצמה תפוסה - לא partial, אלא booked
             if (bookedSlots.contains(slot)) continue;
 
-            // אם אין מספיק שעות עד סוף היום לתור המלא
             if (i + duration > allTimeSlots.size()) {
                 partial.add(slot);
                 continue;
             }
 
-            // בדוק אם יש שעה תפוסה בתוך טווח התור
             boolean hasBlockInRange = false;
             for (int j = 0; j < duration; j++) {
                 if (bookedSlots.contains(allTimeSlots.get(i + j))) {

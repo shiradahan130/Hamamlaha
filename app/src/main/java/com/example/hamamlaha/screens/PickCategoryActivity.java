@@ -17,10 +17,6 @@ import com.example.hamamlaha.models.SalonCategory;
 
 public class PickCategoryActivity extends BaseActivity {
 
-    @Override
-    protected boolean hasSideMenu() {
-        return false;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +30,6 @@ public class PickCategoryActivity extends BaseActivity {
             return insets;
         });
 
-        Button btngoback = findViewById(R.id.btngoback);
-        btngoback.setOnClickListener(v -> {
-            Intent intent = new Intent(PickCategoryActivity.this, MainActivity2.class);
-            startActivity(intent);
-        });
 
         RecyclerView rvCategories = findViewById(R.id.rvCategories);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);

@@ -2,33 +2,16 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="6dp">
 
-    app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
-    app:cardUseCompatPadding="true">
-
-    <FrameLayout
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- התמונה -->
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitCenter"/>
-
-        <!-- שכבת כהות עדינה -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#22000000"/>
-
-    </FrameLayout>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
 
 </androidx.cardview.widget.CardView>
-

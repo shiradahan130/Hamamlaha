@@ -25,74 +25,65 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/btn_yadaeem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="ידיים" />
 
                 <CheckBox
                     android:id="@+id/btn_raglaeem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="80dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
                     android:text="רגליים" />
+
+                <CheckBox
+                    android:id="@+id/btn_yadaeem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="ידיים" />
+
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/btn_betshehi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="בת שחי" />
 
                 <CheckBox
                     android:id="@+id/btn_mefsaot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
-                    android:layout_marginEnd="100dp"
+                    android:layout_marginStart="80dp"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:textSize="20sp"
                     android:text="מפשעה" />
+
+                <CheckBox
+                    android:id="@+id/btn_betshehi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginBottom="40dp"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:textSize="20sp"
+                    android:text="בת שחי" />
+
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/btn_beten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:layout_marginEnd="90dp"
-                    android:textSize="20sp"
-                    android:text="בטן" />
 
                 <CheckBox
                     android:id="@+id/btn_gav"
@@ -100,9 +91,21 @@
                     android:layout_height="wrap_content"
                     android:layoutDirection="rtl"
                     android:fontFamily="@font/asakimboldwebfont"
-                    android:layout_marginEnd="100dp"
+                    android:layout_marginStart="80dp"
                     android:textSize="20sp"
                     android:text="גב" />
+
+                <CheckBox
+                    android:id="@+id/btn_beten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:layout_marginStart="80dp"
+                    android:textSize="20sp"
+                    android:text="בטן" />
+
+
             </TableRow>
         </TableLayout>
 
@@ -110,31 +113,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="155dp"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btngoback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ff0084"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:text="חזור" />
 
             <Button
                 android:id="@+id/btncontinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0084"
-                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/asakimboldwebfont"
                 android:text="המשך" />
+
+            <Button
+                android:id="@+id/btngoback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ff0084"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:text="חזור" />
+
+
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="46dp"
+            android:layout_marginTop="130dp"
             android:background="#ff0084" />
 
     </LinearLayout>

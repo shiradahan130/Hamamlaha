@@ -17,74 +17,79 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginBottom="80dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/nootaj"
             android:text="איזה שירות תרצו?"
             android:textSize="37sp" />
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="50dp">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="50dp">
+            <CheckBox
+                android:id="@+id/btn_adbakatRisim"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:layoutDirection="rtl"
+                android:gravity="left|center_vertical"
+                android:paddingEnd="50dp"
+                android:layout_marginStart="30dp"
+                android:text="הדבקת ריסים"
+                android:textSize="20sp" />
 
-                <CheckBox
-                    android:id="@+id/btn_adbakatRisim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="70dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="הדבקת ריסים" />
+            <CheckBox
+                android:id="@+id/btn_aramatRisim"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:layoutDirection="rtl"
+                android:gravity="right|center_vertical"
+                android:text="הרמת ריסים"
+                android:textSize="20sp" />
 
-                <CheckBox
-                    android:id="@+id/btn_aramatRisim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="הרמת ריסים" />
-            </TableRow>
-        </TableLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
             android:gravity="center"
-            android:layout_marginTop="270dp"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btngoback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ff0084"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:text="חזור" />
 
             <Button
                 android:id="@+id/btncontinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0084"
-                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/asakimboldwebfont"
                 android:text="המשך" />
+
+            <Button
+                android:id="@+id/btngoback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ff0084"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:text="חזור" />
+
+
+
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#ff0084"
-            android:layout_marginTop="52dp" />
+            android:layout_marginTop="130dp"
+            android:background="#ff0084" />
 
     </LinearLayout>
 

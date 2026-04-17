@@ -23,68 +23,73 @@
             android:text="איזה שירות תרצו?"
             android:textSize="37sp" />
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
             android:layout_marginTop="50dp">
+            <CheckBox
+                android:id="@+id/btn_ezovGabot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:layoutDirection="rtl"
+                android:gravity="left|center_vertical"
+                android:paddingEnd="55dp"
+                android:layout_marginStart="55dp"
+                android:text="עיצוב גבות"
+                android:textSize="20sp" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <CheckBox
+                android:id="@+id/btn_miloyGabot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:layoutDirection="rtl"
+                android:gravity="right|center_vertical"
+                android:text="מילוי גבות"
+                android:textSize="20sp" />
 
-                <CheckBox
-                    android:id="@+id/btn_miloyGabot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="מילוי גבות" />
 
-                <CheckBox
-                    android:id="@+id/btn_ezovGabot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:textSize="20sp"
-                    android:text="עיצוב גבות" />
-            </TableRow>
-        </TableLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="270dp"
+            android:layout_marginTop="280dp"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btngoback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ff0084"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:text="חזור" />
 
             <Button
                 android:id="@+id/btncontinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0084"
-                android:layout_marginStart="16dp"
                 android:fontFamily="@font/asakimboldwebfont"
+                android:layout_marginEnd="16dp"
                 android:text="המשך" />
+
+            <Button
+                android:id="@+id/btngoback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="#ff0084"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:text="חזור" />
+
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="#ff0084"
-            android:layout_marginTop="52dp" />
+            android:layout_marginTop="130dp"
+            android:background="#ff0084" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

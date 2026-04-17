@@ -75,14 +75,14 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        ImageButton button5 = findViewById(R.id.imageBtnpedicure);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Step2PedicureActivity.class);
-                startActivity(intent);
-            }
-        });
+        //ImageButton button5 = findViewById(R.id.imageBtnpedicure);
+        //button5.setOnClickListener(new View.OnClickListener() {
+            //@Override
+           // public void onClick(View view) {
+               // Intent intent = new Intent(MainActivity.this, Step2PedicureActivity.class);
+               // startActivity(intent);
+           // }
+      //  });
 
     }
 }

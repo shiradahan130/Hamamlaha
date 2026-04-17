@@ -17,7 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,6 +27,8 @@ import com.example.hamamlaha.R;
 import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.google.android.material.navigation.NavigationView;
+
+import android.graphics.drawable.Drawable;
 
 public abstract class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,7 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         databaseService = DatabaseService.getInstance();
 
-        // ✅ צביעת status bar בורוד תואם ל-Toolbar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(0xFFff0084);
         }
@@ -72,7 +75,6 @@ public abstract class BaseActivity extends AppCompatActivity
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
                 getSupportActionBar().setTitle("");
-                getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_menu_24);
             }
 
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -84,6 +86,14 @@ public abstract class BaseActivity extends AppCompatActivity
             );
             drawerLayout.addDrawerListener(toggle);
             toggle.syncState();
+
+            // כפייה של צבע לבן אחרי syncState
+            Drawable menuIcon = ContextCompat.getDrawable(this, R.drawable.baseline_menu_24);
+            if (menuIcon != null) {
+                menuIcon = DrawableCompat.wrap(menuIcon).mutate();
+                DrawableCompat.setTint(menuIcon, 0xFFFFFFFF);
+                getSupportActionBar().setHomeAsUpIndicator(menuIcon);
+            }
 
             setNavMenuFont(navigationView);
 

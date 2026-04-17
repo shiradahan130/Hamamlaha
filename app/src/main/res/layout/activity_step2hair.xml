@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -10,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/textView"
@@ -23,89 +23,114 @@
             android:text="איזה שירות תרצו?"
             android:textSize="37sp" />
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:orientation="vertical"
+            android:gravity="center">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <CheckBox
-                    android:id="@+id/btn_ahlaka"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/asakimboldwebfont"
-                    android:layoutDirection="rtl"
-                    android:text="החלקה"
-                    android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="40dp">
 
                 <CheckBox
                     android:id="@+id/btn_peen"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:layoutDirection="rtl"
+                    android:gravity="start|center_vertical"
                     android:text="פן"
+                    android:layout_marginEnd="25dp"
                     android:textSize="20sp" />
-            </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <CheckBox
+                    android:id="@+id/btn_ahlaka"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:layoutDirection="rtl"
+                    android:gravity="end|center_vertical"
+                    android:paddingEnd="30dp"
+                    android:text="החלקה"
+                    android:textSize="20sp" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="40dp">
 
                 <CheckBox
                     android:id="@+id/btn_tesporet"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:layoutDirection="rtl"
+                    android:gravity="start|center_vertical"
                     android:text="תספורת"
+                    android:layout_marginEnd="25dp"
                     android:textSize="20sp" />
 
                 <CheckBox
                     android:id="@+id/btn_zeva"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="100dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:layoutDirection="rtl"
+                    android:gravity="end|center_vertical"
+                    android:paddingEnd="50dp"
                     android:text="צבע"
                     android:textSize="20sp" />
-            </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginBottom="40dp">
 
                 <CheckBox
                     android:id="@+id/btn_gvanim"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="90dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:layoutDirection="rtl"
+                    android:gravity="start|center_vertical"
                     android:text="גוונים"
+                    android:layout_marginEnd="25dp"
                     android:textSize="20sp" />
 
                 <CheckBox
                     android:id="@+id/btn_tisroket"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="100dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/asakimboldwebfont"
                     android:layoutDirection="rtl"
+                    android:paddingEnd="25dp"
+                    android:gravity="end|center_vertical"
                     android:text="תסרוקת"
                     android:textSize="20sp" />
-            </TableRow>
-        </TableLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,27 +140,29 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btncontinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#ff0084"
+                android:fontFamily="@font/asakimboldwebfont"
+                android:layout_marginEnd="16dp"
+                android:text="המשך" />
+
+            <Button
                 android:id="@+id/btngoback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
+                android:layout_marginStart="16dp"
                 android:text="חזור" />
 
-            <Button
-                android:id="@+id/btncontinue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#ff0084"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:text="המשך" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="120dp"
             android:background="#ff0084"/>
 
     </LinearLayout>

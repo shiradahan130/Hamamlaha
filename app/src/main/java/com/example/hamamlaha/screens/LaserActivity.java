@@ -6,11 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.hamamlaha.R;
@@ -19,29 +14,24 @@ import com.example.hamamlaha.adapter.ImageAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LaserActivity extends AppCompatActivity {
+public class LaserActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_laser);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        // כפתור חזרה
+        Button goBack = findViewById(R.id.goBack);
+        goBack.setOnClickListener(v -> finish());
 
         // כפתור אינסטגרם
         ImageView instagramBtn = findViewById(R.id.instagramBtn);
-
         instagramBtn.setOnClickListener(v -> {
             String hamamlaha_eilat = "hamamlaha_eilat";
-
             Uri uri = Uri.parse("http://instagram.com/_u/" + hamamlaha_eilat);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             intent.setPackage("com.instagram.android");
-
             try {
                 startActivity(intent);
             } catch (Exception e) {
@@ -50,12 +40,7 @@ public class LaserActivity extends AppCompatActivity {
             }
         });
 
-        Button button = findViewById(R.id.goBack);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(LaserActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
-
+        // קרוסלה
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
         List<Integer> images = new ArrayList<>();
@@ -71,8 +56,6 @@ public class LaserActivity extends AppCompatActivity {
         viewPager.setClipToPadding(false);
         viewPager.setClipChildren(false);
         viewPager.setOffscreenPageLimit(3);
-
-        viewPager.setPadding(100, 0, 100, 0);
 
         viewPager.setPageTransformer((page, position) -> {
             float scale = 0.8f + (1 - Math.abs(position)) * 0.2f;

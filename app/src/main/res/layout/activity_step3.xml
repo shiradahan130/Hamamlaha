@@ -29,7 +29,7 @@
             android:layout_marginBottom="40dp"
             android:fontFamily="@font/nootaj"
             android:gravity="center"
-            android:text="אופציות לתורים אפשריים"
+            android:text="אופציות לתאריכים אפשריים"
             android:textSize="37sp" />
 
         <CalendarView
@@ -59,21 +59,21 @@
             android:padding="16dp">
 
             <Button
-                android:id="@+id/btngoback"
+                android:id="@+id/btncontinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
-                android:text="חזור" />
+                android:text="המשך" />
 
             <Button
-                android:id="@+id/btncontinue"
+                android:id="@+id/btngoback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:backgroundTint="#ff0084"
                 android:fontFamily="@font/asakimboldwebfont"
-                android:text="המשך" />
+                android:text="חזור" />
 
         </LinearLayout>
 

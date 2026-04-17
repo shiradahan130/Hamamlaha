@@ -4,18 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="@color/white"
     android:background="?attr/colorSurface">
 
     <!-- Header -->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="בחרי שעה"
-        android:textSize="22sp"
-        android:fontFamily="@font/lilitaoneregular"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/nootaj"
         android:gravity="center"
-        android:padding="16dp"
-        android:textColor="?attr/colorOnSurface"/>
+        android:text="בחרו שעה"
+        android:textSize="37sp" />
 
     <!-- תאריך נבחר -->
     <TextView
@@ -23,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:fontFamily="@font/nootaj"
         android:textSize="16sp"
         android:paddingBottom="16dp"
         android:textColor="?attr/colorOnSurface"/>
@@ -35,5 +39,14 @@
         android:layout_weight="1"
         android:padding="8dp"
         android:clipToPadding="false"/>
+
+    <Button
+        android:id="@+id/btngoback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ff0084"
+        android:layout_gravity="center"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:text="חזור" />
 
 </LinearLayout>
