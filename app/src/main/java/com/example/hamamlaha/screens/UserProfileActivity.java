@@ -45,13 +45,17 @@ public class UserProfileActivity extends BaseActivity {
             return insets;
         });
 
+        // ✅ תיקון: כפתור חזרה חכם - חוזר לפי מי פתח את המסך
+        boolean fromAdmin = getIntent().getBooleanExtra("FROM_ADMIN", false);
         Button button = findViewById(R.id.goBack);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserProfileActivity.this, MainActivity2.class);
-                startActivity(intent);
+        button.setOnClickListener(view -> {
+            Intent intent;
+            if (fromAdmin) {
+                intent = new Intent(UserProfileActivity.this, UsersListActivity.class);
+            } else {
+                intent = new Intent(UserProfileActivity.this, MainActivity2.class);
             }
+            startActivity(intent);
         });
 
         Button button1 = findViewById(R.id.btn_edit_profile);
@@ -63,7 +67,6 @@ public class UserProfileActivity extends BaseActivity {
             }
         });
 
-
         selectedUid = getIntent().getStringExtra("USER_UID");
         User currentUser = SharedPreferencesUtil.getUser(this);
         assert currentUser != null;
@@ -71,9 +74,6 @@ public class UserProfileActivity extends BaseActivity {
         if (selectedUid == null) {
             selectedUid = currentUser.getId();
         }
-
-
-
 
         // Initialize the EditText fields
         etUserFirstName = findViewById(R.id.et_user_first_name);
@@ -85,30 +85,24 @@ public class UserProfileActivity extends BaseActivity {
         tvUserDisplayEmail = findViewById(R.id.tv_user_display_email);
         adminBadge = findViewById(R.id.admin_badge);
 
-
         showUserProfile();
     }
 
-
     private void showUserProfile() {
-        // Get the user data from database
         DatabaseService.getInstance().getUser(selectedUid, new DatabaseService.DatabaseCallback<User>() {
             @Override
             public void onCompleted(User user) {
                 selectedUser = user;
-                // Set the user data to the EditText fields
                 etUserFirstName.setText(user.getFname());
                 etUserLastName.setText(user.getLname());
                 etUserEmail.setText(user.getEmail());
                 etUserPhone.setText(user.getPhone());
                 etUserPassword.setText(user.getPassword());
 
-                // Update display fields
                 String displayName = user.getFname() + " " + user.getLname();
                 tvUserDisplayName.setText(displayName);
                 tvUserDisplayEmail.setText(user.getEmail());
 
-                // Show/hide admin badge based on user's admin status
                 if (user.isAdmin()) {
                     adminBadge.setVisibility(View.VISIBLE);
                     Log.d(TAG, "User is admin, showing admin badge");
@@ -124,7 +118,6 @@ public class UserProfileActivity extends BaseActivity {
             }
         });
 
-        // disable the EditText fields if the user is not the current user
         if (!isCurrentUser) {
             etUserEmail.setEnabled(false);
             etUserPassword.setEnabled(false);
@@ -140,7 +133,6 @@ public class UserProfileActivity extends BaseActivity {
             Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
             return;
         }
-        // Get the updated user data from the EditText fields
         String firstName = etUserFirstName.getText().toString();
         String lastName = etUserLastName.getText().toString();
         String phone = etUserPhone.getText().toString();
@@ -152,27 +144,21 @@ public class UserProfileActivity extends BaseActivity {
             return;
         }
 
-        // Update the user object
         selectedUser.setFname(firstName);
         selectedUser.setLname(lastName);
         selectedUser.setPhone(phone);
         selectedUser.setEmail(email);
         selectedUser.setPassword(password);
 
-        // Update the user data in the authentication
         Log.d(TAG, "Updating user profile");
         Log.d(TAG, "Selected user UID: " + selectedUser.getId());
         Log.d(TAG, "Is current user: " + isCurrentUser);
         Log.d(TAG, "User email: " + selectedUser.getEmail());
         Log.d(TAG, "User password: " + selectedUser.getPassword());
 
-
-
         if (isCurrentUser) {
             updateUserInDatabase(selectedUser);
-        }
-        else if (selectedUser.isAdmin()) {
-            // update the user in the database
+        } else if (selectedUser.isAdmin()) {
             updateUserInDatabase(selectedUser);
         }
     }
@@ -184,7 +170,7 @@ public class UserProfileActivity extends BaseActivity {
             public void onCompleted(Void result) {
                 Log.d(TAG, "User profile updated successfully");
                 Toast.makeText(UserProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                showUserProfile(); // Refresh the profile view
+                showUserProfile();
             }
 
             @Override

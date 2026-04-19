@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,6 +25,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.hamamlaha.R;
+import com.example.hamamlaha.models.User;
 import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
 import com.google.android.material.navigation.NavigationView;
@@ -42,6 +44,10 @@ public abstract class BaseActivity extends AppCompatActivity
 
     protected boolean hasToolbar() {
         return true;
+    }
+
+    protected int getNavMenu() {
+        return R.menu.nav_menu;
     }
 
     @Override
@@ -67,6 +73,16 @@ public abstract class BaseActivity extends AppCompatActivity
 
         drawerLayout = findViewById(R.id.nav_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        navigationView.getMenu().clear();
+        navigationView.inflateMenu(getNavMenu());
+
+        // ✅ הסתר "ניהול משתמשים" מאדמין רגיל
+        MenuItem manageUsersItem = navigationView.getMenu().findItem(R.id.nav_manage_users);
+        if (manageUsersItem != null) {
+            manageUsersItem.setVisible(isMainAdmin());
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
 
         if (hasSideMenu()) {
@@ -87,7 +103,6 @@ public abstract class BaseActivity extends AppCompatActivity
             drawerLayout.addDrawerListener(toggle);
             toggle.syncState();
 
-            // כפייה של צבע לבן אחרי syncState
             Drawable menuIcon = ContextCompat.getDrawable(this, R.drawable.baseline_menu_24);
             if (menuIcon != null) {
                 menuIcon = DrawableCompat.wrap(menuIcon).mutate();
@@ -162,6 +177,14 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
+    // ✅ בודק אם המשתמש הנוכחי הוא אדמין ראשי (admin=true וללא קטגוריה)
+    private boolean isMainAdmin() {
+        User currentUser = SharedPreferencesUtil.getUser(this);
+        if (currentUser == null) return false;
+        return currentUser.isAdmin() &&
+                (currentUser.getAdminCategory() == null || currentUser.getAdminCategory().isEmpty());
+    }
+
     protected void navigateTo(Class<?> targetActivity) {
         if (!this.getClass().equals(targetActivity)) {
             Intent intent = new Intent(this, targetActivity);
@@ -173,9 +196,9 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
         int id = item.getItemId();
 
+        // תפריט משתמש רגיל
         if (id == R.id.nav_home) {
             navigateTo(MainActivity2.class);
         } else if (id == R.id.nav_user_profile) {
@@ -188,6 +211,23 @@ public abstract class BaseActivity extends AppCompatActivity
             drawerLayout.closeDrawer(GravityCompat.START);
             showLogoutDialog();
         }
+
+        // תפריט אדמין
+        else if (id == R.id.nav_appointments) {
+            navigateTo(AdminActivity.class);
+        } else if (id == R.id.nav_manage_users) {
+            // ✅ רק אדמין ראשי יכול לגשת לרשימת משתמשים
+            if (isMainAdmin()) {
+                navigateTo(UsersListActivity.class);
+            } else {
+                Toast.makeText(this, "אין לך הרשאה לצפות ברשימת המשתמשים", Toast.LENGTH_SHORT).show();
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        } else if (id == R.id.nav_logout) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            showLogoutDialog();
+        }
+
         return true;
     }
 

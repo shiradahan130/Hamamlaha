@@ -2,4 +2,6 @@
     <style name="Base.Theme.Hamamlaha" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">#ff0084</item>
     </style>
+
+    <style name="Theme.Hamamlaha" parent="Base.Theme.Hamamlaha" />
 </resources>

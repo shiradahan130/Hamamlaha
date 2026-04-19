@@ -63,16 +63,10 @@
             android:name=".screens.Step2EyelashesActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.Step2NailsActivity"
-            android:exported="false" />
-        <activity
             android:name=".screens.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".screens.UserProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".screens.Step2PedicureActivity"
             android:exported="false" />
         <activity
             android:name=".screens.updateDetailsActivity"

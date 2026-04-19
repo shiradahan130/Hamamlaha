@@ -6,11 +6,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".screens.MainActivity2">
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@android:color/white"
             android:padding="16dp">
 
             <ImageView
@@ -40,9 +43,6 @@
                 android:text="ברוכים הבאים להממלכה! כאן מוגשמים יופי של חלומות"
                 android:layout_marginTop="8dp"/>
 
-
-
-            <!-- הוספת ImageView למפה -->
             <ImageView
                 android:id="@+id/bnt_map"
                 android:layout_width="360dp"

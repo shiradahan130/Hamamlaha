@@ -87,6 +87,9 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     androidx.core.content.ContextCompat.getColor(context, R.color.green_500)));
+                    // ✅ תור מאושר - מסתירים כפתור אישור, משאירים רק ביטול
+                    btnApprove.setVisibility(View.GONE);
+                    btnCancel.setVisibility(View.VISIBLE);
                     break;
                 case "CANCELED":
                     tvStatus.setText("בוטל ✗");
@@ -94,6 +97,9 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     androidx.core.content.ContextCompat.getColor(context, R.color.red_400)));
+                    // ✅ תור מבוטל - מסתירים את שני הכפתורים
+                    btnApprove.setVisibility(View.GONE);
+                    btnCancel.setVisibility(View.GONE);
                     break;
                 default:
                     tvStatus.setText("ממתין");
@@ -101,11 +107,23 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     android.graphics.Color.parseColor("#FF9800")));
+                    // ✅ תור ממתין - מציגים את שני הכפתורים
+                    btnApprove.setVisibility(View.VISIBLE);
+                    btnCancel.setVisibility(View.VISIBLE);
                     break;
             }
 
             btnApprove.setOnClickListener(v -> listener.onApprove(appointment));
-            btnCancel.setOnClickListener(v -> listener.onCancel(appointment));
+
+            // ✅ כפתור ביטול - שואל אם בטוח לפני ביטול
+            btnCancel.setOnClickListener(v -> {
+                new androidx.appcompat.app.AlertDialog.Builder(context)
+                        .setTitle("ביטול תור")
+                        .setMessage("האם אתה בטוח שברצונך לבטל את התור?")
+                        .setPositiveButton("כן, בטל", (dialog, which) -> listener.onCancel(appointment))
+                        .setNegativeButton("לא", null)
+                        .show();
+            });
         }
     }
 }

@@ -69,6 +69,9 @@ public class Step4Activity extends BaseActivity {
         Button btnGoBack = findViewById(R.id.btngoback);
         btnGoBack.setOnClickListener(view -> {
             Intent intent = new Intent(Step4Activity.this, Step3Activity.class);
+            intent.putExtra("category", category);
+            intent.putExtra("options", options);
+            intent.putExtra("duration", duration);
             startActivity(intent);
         });
 
@@ -225,6 +228,7 @@ public class Step4Activity extends BaseActivity {
                 intent.putExtra("options", options);
                 intent.putExtra("date", date);
                 intent.putExtra("time", time);
+                intent.putExtra("duration", duration); // ✅ תוקן: duration מועבר ל-Step5
                 startActivity(intent);
             }
 

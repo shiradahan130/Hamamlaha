@@ -46,10 +46,10 @@ public class Step3Activity extends BaseActivity {
 
         calendarView = findViewById(R.id.calendarView);
 
-        // ✅ מניעת בחירת תאריך מהעבר
+        // מניעת בחירת תאריך מהעבר
         calendarView.setMinDate(System.currentTimeMillis());
 
-        // ✅ הגבלת תאריך מקסימלי - עד 3 חודשים קדימה
+        // הגבלת תאריך מקסימלי - עד 3 חודשים קדימה
         long threeMonthsFromNow = System.currentTimeMillis() + (long)(90L * 24 * 60 * 60 * 1000);
         calendarView.setMaxDate(threeMonthsFromNow);
 
@@ -63,9 +63,37 @@ public class Step3Activity extends BaseActivity {
         });
 
         // --- כפתור חזרה ---
+        // ✅ תיקון: חוזר למקום הנכון לפי הקטגוריה
         Button button = findViewById(R.id.btngoback);
         button.setOnClickListener(view -> {
-            Intent intent = new Intent(Step3Activity.this, Step2HairActivity.class);
+            Intent intent;
+
+            // NAILS ו-PEDICUR אין להם שלב 2 - חוזרים לבחירת קטגוריה
+            if (category == SalonCategory.NAILS || category == SalonCategory.PEDICUR) {
+                intent = new Intent(Step3Activity.this, PickCategoryActivity.class);
+                startActivity(intent);
+                return;
+            }
+
+            // שאר השירותים - חוזרים לשלב 2 המתאים
+            switch (category) {
+                case HAIR:
+                    intent = new Intent(Step3Activity.this, Step2HairActivity.class);
+                    break;
+                case EYELASHES:
+                    intent = new Intent(Step3Activity.this, Step2EyelashesActivity.class);
+                    break;
+                case LASER:
+                    intent = new Intent(Step3Activity.this, Step2LaserActivity.class);
+                    break;
+                case EYEBROWS:
+                    intent = new Intent(Step3Activity.this, Step2EyebrowsActivity.class);
+                    break;
+                default:
+                    intent = new Intent(Step3Activity.this, PickCategoryActivity.class);
+                    break;
+            }
+            intent.putExtra("category", category);
             startActivity(intent);
         });
 

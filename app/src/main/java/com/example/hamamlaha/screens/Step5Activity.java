@@ -36,6 +36,7 @@ public class Step5Activity extends BaseActivity {
         String options = getIntent().getStringExtra("options");
         String date = getIntent().getStringExtra("date");
         String time = getIntent().getStringExtra("time");
+        int duration = getIntent().getIntExtra("duration", 1);
 
         // הצגת הפרטים
         TextView tvCategory = findViewById(R.id.tv_category);
@@ -46,7 +47,9 @@ public class Step5Activity extends BaseActivity {
         tvCategory.setText(category != null ? category.name() : "");
         tvOptions.setText(options);
         tvDate.setText(date);
-        tvTime.setText(time);
+
+        // ✅ חישוב שעת סיום והצגת "ממתי עד מתי"
+        tvTime.setText(calcTimeRange(time, duration));
 
         // כפתור חזרה לדף הבית
         Button btnHome = findViewById(R.id.btn_home);
@@ -55,5 +58,22 @@ public class Step5Activity extends BaseActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
+    }
+
+    // ✅ מחשב טווח שעות בפורמט "HH:mm - HH:mm"
+    private String calcTimeRange(String startTime, int duration) {
+        if (startTime == null || startTime.isEmpty()) return "";
+
+        try {
+            String[] parts = startTime.split(":");
+            int hour = Integer.parseInt(parts[0]);
+            int minute = Integer.parseInt(parts[1]);
+
+            int endHour = (hour + duration) % 24;
+
+            return String.format("%02d:%02d - %02d:%02d", hour, minute, endHour, minute);
+        } catch (Exception e) {
+            return startTime;
+        }
     }
 }
