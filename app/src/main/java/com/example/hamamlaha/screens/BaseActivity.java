@@ -77,7 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity
         navigationView.getMenu().clear();
         navigationView.inflateMenu(getNavMenu());
 
-        // ✅ הסתר "ניהול משתמשים" מאדמין רגיל
+        // הסתר "ניהול משתמשים" מאדמין רגיל
         MenuItem manageUsersItem = navigationView.getMenu().findItem(R.id.nav_manage_users);
         if (manageUsersItem != null) {
             manageUsersItem.setVisible(isMainAdmin());
@@ -177,7 +177,6 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
-    // ✅ בודק אם המשתמש הנוכחי הוא אדמין ראשי (admin=true וללא קטגוריה)
     private boolean isMainAdmin() {
         User currentUser = SharedPreferencesUtil.getUser(this);
         if (currentUser == null) return false;
@@ -212,11 +211,15 @@ public abstract class BaseActivity extends AppCompatActivity
             showLogoutDialog();
         }
 
+        // ✅ חדש - התורים שלי
+        else if (id == R.id.nav_my_appointments) {
+            navigateTo(MyAppointmentsActivity.class);
+        }
+
         // תפריט אדמין
         else if (id == R.id.nav_appointments) {
             navigateTo(AdminActivity.class);
         } else if (id == R.id.nav_manage_users) {
-            // ✅ רק אדמין ראשי יכול לגשת לרשימת משתמשים
             if (isMainAdmin()) {
                 navigateTo(UsersListActivity.class);
             } else {

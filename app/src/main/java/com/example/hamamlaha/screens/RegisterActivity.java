@@ -81,13 +81,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private boolean checkInput(String email, String password, String fName, String lName, String phone) {
         if (!Validator.isNameValid(fName)) {
-            etFName.setError("First name must be at least 3 characters long");
+            etFName.setError("First name must be at least 2 characters long");
             etFName.requestFocus();
             return false;
         }
 
         if (!Validator.isNameValid(lName)) {
-            etLName.setError("Last name must be at least 3 characters long");
+            etLName.setError("Last name must be at least 2 characters long");
             etLName.requestFocus();
             return false;
         }

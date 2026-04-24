@@ -201,7 +201,7 @@
                     android:layout_marginTop="8dp"
                     android:backgroundTint="#ff0084"
                     android:fontFamily="@font/asakimboldwebfont"
-                    android:text="עידכון פרטים"
+                    android:text="עדכון פרטים"
                     android:textColor="@color/black"
                     android:textSize="15pt"/>
                 <!--app:icon="@android:drawable/ic_menu_save"-->

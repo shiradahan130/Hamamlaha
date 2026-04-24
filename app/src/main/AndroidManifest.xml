@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="35">
         <activity
+            android:name=".screens.MyAppointmentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.AdminActivity"
             android:exported="false" />
         <activity

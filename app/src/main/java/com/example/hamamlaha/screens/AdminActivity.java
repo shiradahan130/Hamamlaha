@@ -2,6 +2,7 @@ package com.example.hamamlaha.screens;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -35,6 +36,7 @@ public class AdminActivity extends BaseActivity {
 
     private AppointmentAdminAdapter adapter;
     private User currentUser;
+    private TextView tvAppointmentCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class AdminActivity extends BaseActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        tvAppointmentCount = findViewById(R.id.tv_appointment_count);
 
         RecyclerView rv = findViewById(R.id.rv_appointments);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -59,7 +63,6 @@ public class AdminActivity extends BaseActivity {
 
             @Override
             public void onCancel(Appointment appointment) {
-                // ✅ תוקן: getAppointmentId() במקום getId()
                 DatabaseService.getInstance().deleteAppointment(appointment.getAppointmentId(), new DatabaseService.DatabaseCallback<Void>() {
                     @Override
                     public void onCompleted(Void v) {
@@ -76,18 +79,21 @@ public class AdminActivity extends BaseActivity {
         });
         rv.setAdapter(adapter);
 
-        User savedUser = SharedPreferencesUtil.getUser(this);
-        if (savedUser != null) {
-            DatabaseService.getInstance().getUser(savedUser.getId(), new DatabaseService.DatabaseCallback<User>() {
+        currentUser = SharedPreferencesUtil.getUser(this);
+        loadAppointments();
+
+        if (currentUser != null) {
+            DatabaseService.getInstance().getUser(currentUser.getId(), new DatabaseService.DatabaseCallback<User>() {
                 @Override
                 public void onCompleted(User user) {
                     currentUser = user;
+                    SharedPreferencesUtil.saveUser(AdminActivity.this, user);
                     loadAppointments();
                 }
 
                 @Override
                 public void onFailed(Exception e) {
-                    Log.e("AdminActivity", "Failed to load user", e);
+                    Log.e("AdminActivity", "Failed to refresh user", e);
                 }
             });
         }
@@ -111,6 +117,8 @@ public class AdminActivity extends BaseActivity {
                 }
 
                 adapter.updateAppointments(filtered);
+                // ✅ עדכון מספר התורים
+                tvAppointmentCount.setText("מספר תורים: " + filtered.size());
             }
 
             @Override

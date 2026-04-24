@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_appointment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- שם משתמש + קטגוריה + פח מחיקה -->
+        <!-- קטגוריה + סטטוס -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,20 +39,8 @@
                 android:fontFamily="@font/lilitaoneregular"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="4dp"
-                app:backgroundTint="#ff0084"
                 android:background="@drawable/bg_status"
                 android:textColor="@color/white"/>
-
-            <!-- ✅ כפתור פח מחיקה -->
-            <ImageButton
-                android:id="@+id/btn_delete"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_delete"
-                android:tint="#888888"
-                android:contentDescription="מחק תור"/>
 
         </LinearLayout>
 
@@ -71,34 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- כפתורי אישור/ביטול -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ביטול"
-                android:backgroundTint="#EF5350"
-                android:fontFamily="@font/asakimboldwebfont"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btn_approve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="אישור"
-                android:backgroundTint="#4CAF50"
-                android:fontFamily="@font/asakimboldwebfont"/>
-
-        </LinearLayout>
+            android:fontFamily="@font/asakimboldwebfont"
+            android:textColor="?attr/colorOnSurface"/>
 
     </LinearLayout>
 

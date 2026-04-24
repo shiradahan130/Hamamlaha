@@ -5,33 +5,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:backgroundTint="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorSurface">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/nootaj"
         android:gravity="center"
         android:text="בחרו שעה"
         android:textSize="37sp" />
 
-    <!-- תאריך נבחר -->
-    <TextView
-        android:id="@+id/tv_selected_date"
+    <!-- תאריך + כפתור info -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="@font/nootaj"
-        android:textSize="16sp"
-        android:paddingBottom="16dp"
-        android:textColor="?attr/colorOnSurface"/>
+        android:layout_height="48dp"
+        android:layout_marginBottom="16dp">
 
-    <!-- רשימת שעות -->
+        <TextView
+            android:id="@+id/tv_selected_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nootaj"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"/>
+
+        <ImageButton
+            android:id="@+id/btn_info"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_toStartOf="@id/tv_selected_date"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="6dp"
+            android:background="@null"
+            android:src="@drawable/ic_info"
+            android:padding="2dp"
+            android:contentDescription="מידע על סטטוסים" />
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_time_slots"
         android:layout_width="match_parent"

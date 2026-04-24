@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.models.Appointment;
+import com.example.hamamlaha.service.DatabaseService;
 
 import java.util.List;
 
@@ -63,6 +65,7 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
         private final TextView tvOptions;
         private final Button btnApprove;
         private final Button btnCancel;
+        private final ImageButton btnDelete;
 
         public AppointmentViewHolder(View itemView) {
             super(itemView);
@@ -72,6 +75,7 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
             tvOptions = itemView.findViewById(R.id.tv_options);
             btnApprove = itemView.findViewById(R.id.btn_approve);
             btnCancel = itemView.findViewById(R.id.btn_cancel);
+            btnDelete = itemView.findViewById(R.id.btn_delete);
         }
 
         public void bind(Appointment appointment) {
@@ -79,7 +83,6 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
             tvDateTime.setText(appointment.getDate() + " | " + appointment.getTime());
             tvOptions.setText(appointment.getStatus());
 
-            // צבע סטטוס
             switch (appointment.getStatus()) {
                 case "APPROVED":
                     tvStatus.setText("מאושר ✓");
@@ -87,7 +90,6 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     androidx.core.content.ContextCompat.getColor(context, R.color.green_500)));
-                    // ✅ תור מאושר - מסתירים כפתור אישור, משאירים רק ביטול
                     btnApprove.setVisibility(View.GONE);
                     btnCancel.setVisibility(View.VISIBLE);
                     break;
@@ -97,7 +99,6 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     androidx.core.content.ContextCompat.getColor(context, R.color.red_400)));
-                    // ✅ תור מבוטל - מסתירים את שני הכפתורים
                     btnApprove.setVisibility(View.GONE);
                     btnCancel.setVisibility(View.GONE);
                     break;
@@ -107,20 +108,54 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
                                     android.graphics.Color.parseColor("#FF9800")));
-                    // ✅ תור ממתין - מציגים את שני הכפתורים
                     btnApprove.setVisibility(View.VISIBLE);
                     btnCancel.setVisibility(View.VISIBLE);
                     break;
             }
 
-            btnApprove.setOnClickListener(v -> listener.onApprove(appointment));
+            // כפתור אישור
+            btnApprove.setOnClickListener(v -> {
+                new androidx.appcompat.app.AlertDialog.Builder(context)
+                        .setTitle("אישור תור")
+                        .setMessage("האם אתה בטוח שברצונך לאשר את התור?")
+                        .setPositiveButton("כן, אשר", (dialog, which) -> listener.onApprove(appointment))
+                        .setNegativeButton("לא", null)
+                        .show();
+            });
 
-            // ✅ כפתור ביטול - שואל אם בטוח לפני ביטול
+            // כפתור ביטול
             btnCancel.setOnClickListener(v -> {
                 new androidx.appcompat.app.AlertDialog.Builder(context)
                         .setTitle("ביטול תור")
                         .setMessage("האם אתה בטוח שברצונך לבטל את התור?")
                         .setPositiveButton("כן, בטל", (dialog, which) -> listener.onCancel(appointment))
+                        .setNegativeButton("לא", null)
+                        .show();
+            });
+
+            // ✅ כפתור פח - מוחק את התור לגמרי מהרשימה ומהפיירבייס
+            btnDelete.setOnClickListener(v -> {
+                new androidx.appcompat.app.AlertDialog.Builder(context)
+                        .setTitle("מחיקת תור")
+                        .setMessage("האם אתה בטוח שברצונך למחוק את התור לגמרי?")
+                        .setPositiveButton("כן, מחק", (dialog, which) -> {
+                            DatabaseService.getInstance().deleteAppointment(
+                                    appointment.getAppointmentId(),
+                                    new DatabaseService.DatabaseCallback<Void>() {
+                                        @Override
+                                        public void onCompleted(Void v) {
+                                            int pos = appointments.indexOf(appointment);
+                                            if (pos >= 0) {
+                                                appointments.remove(pos);
+                                                notifyItemRemoved(pos);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailed(Exception e) {
+                                        }
+                                    });
+                        })
                         .setNegativeButton("לא", null)
                         .show();
             });

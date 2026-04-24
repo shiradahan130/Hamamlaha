@@ -1,8 +1,10 @@
 package com.example.hamamlaha.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.models.User;
+import com.example.hamamlaha.service.DatabaseService;
 import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
-
 
     public interface OnUserClickListener {
         void onUserClick(User user);
@@ -26,6 +28,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private final List<User> userList;
     private final OnUserClickListener onUserClickListener;
+
     public UserAdapter(@Nullable final OnUserClickListener onUserClickListener) {
         userList = new ArrayList<>();
         this.onUserClickListener = onUserClickListener;
@@ -78,6 +81,30 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             return true;
         });
 
+        // ✅ כפתור פח - מוחק משתמש לגמרי מהרשימה ומהפיירבייס
+        holder.btnDelete.setOnClickListener(v -> {
+            new androidx.appcompat.app.AlertDialog.Builder(v.getContext())
+                    .setTitle("מחיקת משתמש")
+                    .setMessage("האם אתה בטוח שברצונך למחוק את " + user.getFullName() + "?")
+                    .setPositiveButton("כן, מחק", (dialog, which) -> {
+                        DatabaseService.getInstance().deleteUser(user.getId(), new DatabaseService.DatabaseCallback<Void>() {
+                            @Override
+                            public void onCompleted(Void v) {
+                                int pos = userList.indexOf(user);
+                                if (pos >= 0) {
+                                    userList.remove(pos);
+                                    notifyItemRemoved(pos);
+                                }
+                            }
+
+                            @Override
+                            public void onFailed(Exception e) {
+                            }
+                        });
+                    })
+                    .setNegativeButton("לא", null)
+                    .show();
+        });
     }
 
     @Override
@@ -95,6 +122,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         userList.add(user);
         notifyItemInserted(userList.size() - 1);
     }
+
     public void updateUser(User user) {
         int index = userList.indexOf(user);
         if (index == -1) return;
@@ -112,6 +140,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvEmail, tvPhone, tvInitials;
         Chip chipRole;
+        ImageButton btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,6 +149,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             tvPhone = itemView.findViewById(R.id.tv_item_user_phone);
             tvInitials = itemView.findViewById(R.id.tv_user_initials);
             chipRole = itemView.findViewById(R.id.chip_user_role);
+            btnDelete = itemView.findViewById(R.id.btn_delete_user);
         }
     }
 }

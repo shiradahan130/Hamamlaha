@@ -3,6 +3,10 @@ package com.example.hamamlaha.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -10,9 +14,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.adapter.TimeSlotsAdapter;
@@ -75,12 +76,23 @@ public class Step4Activity extends BaseActivity {
             startActivity(intent);
         });
 
+        ImageButton btnInfo = findViewById(R.id.btn_info);
+        btnInfo.setOnClickListener(view -> showLegendDialog());
+
         RecyclerView rv = findViewById(R.id.rv_time_slots);
         rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new TimeSlotsAdapter(this, allTimeSlots, bookedSlots, time -> {
             showConfirmationDialog(time);
         });
         rv.setAdapter(adapter);
+    }
+
+    private void showLegendDialog() {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_legend, null);
+        new MaterialAlertDialogBuilder(this)
+                .setView(dialogView)
+                .setPositiveButton("הבנתי", null)
+                .show();
     }
 
     @Override
@@ -228,7 +240,7 @@ public class Step4Activity extends BaseActivity {
                 intent.putExtra("options", options);
                 intent.putExtra("date", date);
                 intent.putExtra("time", time);
-                intent.putExtra("duration", duration); // ✅ תוקן: duration מועבר ל-Step5
+                intent.putExtra("duration", duration);
                 startActivity(intent);
             }
 

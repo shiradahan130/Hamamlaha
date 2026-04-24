@@ -10,16 +10,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ניהול תורים"
-        android:layout_marginTop="24dp"
-        android:textSize="35sp"
+        android:text="התורים שלי"
+        android:textSize="37sp"
         android:fontFamily="@font/nootaj"
         android:gravity="center"
         android:padding="16dp"
-        android:textStyle="bold"
         android:textColor="?attr/colorOnSurface"/>
 
-    <!-- ✅ מספר תורים -->
     <TextView
         android:id="@+id/tv_appointment_count"
         android:layout_width="wrap_content"
@@ -29,14 +26,26 @@
         android:layout_marginBottom="8dp"
         android:text="מספר תורים: 0"
         android:textSize="14sp"
-        android:fontFamily="@font/miriwinwebfont" />
+        android:fontFamily="@font/miriwinwebfont"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_appointments"
+        android:id="@+id/rv_my_appointments"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp"
         android:clipToPadding="false"/>
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="אין תורים עדיין"
+        android:textSize="18sp"
+        android:fontFamily="@font/asakimboldwebfont"
+        android:textColor="#888888"
+        android:visibility="gone"/>
 
 </LinearLayout>

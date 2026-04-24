@@ -129,12 +129,16 @@
                 app:chipStrokeWidth="0dp"
                 tools:visibility="visible" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+            <!-- ✅ כפתור פח מחיקה -->
+            <ImageButton
+                android:id="@+id/btn_delete_user"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_marginTop="8dp"
-                android:src="@android:drawable/ic_menu_more"
-                app:tint="#999999" />
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_delete"
+                android:tint="#888888"
+                android:contentDescription="מחק משתמש"/>
 
         </LinearLayout>
 
