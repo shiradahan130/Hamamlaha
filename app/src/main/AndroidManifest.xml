@@ -12,6 +12,18 @@
         android:theme="@style/Theme.Hamamlaha"
         tools:targetApi="35">
         <activity
+            android:name=".screens.EyebrowsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.PendingAppointmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.AdminHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.LandingActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.MyAppointmentsActivity"
             android:exported="false" />
         <activity
@@ -81,7 +93,7 @@
             android:name=".screens.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".screens.LandingActivity"
+            android:name=".screens.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -25,6 +25,7 @@
             android:background="@android:color/white"
             android:padding="16dp">
 
+            <!-- לוגו -->
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
@@ -32,6 +33,7 @@
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/hamamlaha_name" />
 
+            <!-- טקסט ברוכים הבאים -->
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -39,20 +41,90 @@
                 android:gravity="center"
                 android:fontFamily="@font/miriwinwebfont"
                 android:textSize="12sp"
+                android:layout_marginBottom="20dp"
                 android:textColor="#ff0084"
                 android:text="ברוכים הבאים להממלכה! כאן מוגשמים יופי של חלומות"
                 android:layout_marginTop="8dp"/>
 
+
+
+            <!-- כרטיס יצירת קשר -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFF0F5"
+                android:padding="16dp"
+                android:layout_marginTop="24dp"
+                android:elevation="4dp">
+
+                <!-- כותרת -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="צרו איתנו קשר"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="#ff0084"
+                    android:gravity="center"
+                    android:fontFamily="@font/asakimboldwebfont"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- שעות פעילות -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="שעות  פעילות: 20:00 - 07:00  🕐"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:gravity="center"
+                    android:fontFamily="@font/miriwinwebfont"
+                    android:layout_marginBottom="12dp"/>
+
+                <!-- כפתור טלפון -->
+                <Button
+                    android:id="@+id/btn_call"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="התקשרו: 053-386-6468  📞"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#ff0084"
+                    android:fontFamily="@font/nootaj"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- כפתור וואטסאפ -->
+                <Button
+                    android:id="@+id/btn_whatsapp"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="וואטסאפ  💬"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#25D366"
+                    android:fontFamily="@font/nootaj"/>
+
+            </LinearLayout>
+
+            <!-- תמונת מפה -->
             <ImageView
                 android:id="@+id/bnt_map"
-                android:layout_width="360dp"
-                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:src="@drawable/ic_map"
-                android:contentDescription="Open Waze"
                 android:clickable="true"
                 android:focusable="true"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="לחץ  על  המפה  כדי  להגיע  לממלכה"
+                android:textSize="10sp"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:fontFamily="@font/miriwinwebfont"
+                android:layout_marginBottom="12dp"/>
 
         </LinearLayout>
 

@@ -8,6 +8,10 @@
         android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_admin_home"
+            android:title="דף ראשי"/>
+
+        <item
             android:id="@+id/nav_appointments"
             android:title="ניהול תורים"/>
 

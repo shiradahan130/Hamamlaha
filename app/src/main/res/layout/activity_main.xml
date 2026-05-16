@@ -147,7 +147,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="left">
 
                 <FrameLayout
                     android:layout_width="200dp"
@@ -173,30 +174,60 @@
                         android:background="#80FFFFFF" />
                 </FrameLayout>
 
-                <FrameLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="5dp">
-
-                    <ImageButton
-                        android:id="@+id/imageBtnpedicure"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/pedicurephoto" />
+                <!-- כפתור אינסטגרם -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="right">
 
                     <TextView
-                        android:id="@+id/textpedicure"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="center"
-                        android:textSize="20sp"
-                        android:text="פדיקור"
                         android:fontFamily="@font/asakimboldwebfont"
-                        android:background="#80FFFFFF" />
-                </FrameLayout>
-            </LinearLayout>
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:text="לתמונות ומידע נוסף היכנסו לאינסטגרם של הממלכה"
+                        android:textColor="#ff0084"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/asakimboldwebfont"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+                        android:text="כך תישארו מעודכנים ותראו
+                         איך הקסם קורה !"
+                        android:textColor="#ff0084"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/instagramBtn"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/instagram_icon" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/playitalic"
+                        android:textSize="10sp"
+                        android:layout_gravity="center"
+                        android:text="hamamlaha_eilat"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+        </LinearLayout>
 
             <!-- פס תחתון -->
             <View

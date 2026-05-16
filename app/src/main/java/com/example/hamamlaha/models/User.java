@@ -1,7 +1,6 @@
 package com.example.hamamlaha.models;
 
 import androidx.annotation.NonNull;
-import com.google.firebase.database.PropertyName;
 
 public class User {
     public String fname;
@@ -10,7 +9,7 @@ public class User {
     public String email;
     public String password;
     public String phone;
-    private boolean admin;  // שונה ל-private
+    public boolean admin;
     public String adminCategory;
 
     public User() {
@@ -45,10 +44,7 @@ public class User {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
-    @PropertyName("admin")
     public boolean isAdmin() { return admin; }
-
-    @PropertyName("admin")
     public void setAdmin(boolean admin) { this.admin = admin; }
 
     public String getAdminCategory() { return adminCategory; }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.hamamlaha.R;
@@ -21,6 +22,7 @@ public class MainActivity2 extends BaseActivity {
         setContentView(R.layout.activity_main2);
         Log.d(TAG, "setContentView done");
 
+        // כפתור מפה
         ImageView bnt_map = findViewById(R.id.bnt_map);
         Log.d(TAG, "bnt_map: " + bnt_map);
 
@@ -29,6 +31,27 @@ public class MainActivity2 extends BaseActivity {
             Log.d(TAG, "setOnClickListener done");
         } else {
             Log.e(TAG, "bnt_map is NULL - בעיה ב-layout!");
+        }
+
+        // כפתור טלפון
+        Button btnCall = findViewById(R.id.btn_call);
+        if (btnCall != null) {
+            btnCall.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0533866468"));
+                startActivity(intent);
+            });
+        }
+
+        // כפתור וואטסאפ
+        Button btnWhatsapp = findViewById(R.id.btn_whatsapp);
+        if (btnWhatsapp != null) {
+            btnWhatsapp.setOnClickListener(v -> {
+                String phone = "9720533866468"; // קידומת ישראל
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://wa.me/" + phone));
+                startActivity(intent);
+            });
         }
 
         Log.d(TAG, "onCreate finished");

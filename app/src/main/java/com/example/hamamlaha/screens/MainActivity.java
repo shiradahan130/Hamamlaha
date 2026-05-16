@@ -1,10 +1,12 @@
 package com.example.hamamlaha.screens;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 
 import androidx.activity.EdgeToEdge;
@@ -61,7 +63,7 @@ public class MainActivity extends BaseActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Step2EyebrowsActivity.class);
+                Intent intent = new Intent(MainActivity.this, EyebrowsActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,14 +77,20 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        //ImageButton button5 = findViewById(R.id.imageBtnpedicure);
-        //button5.setOnClickListener(new View.OnClickListener() {
-            //@Override
-           // public void onClick(View view) {
-               // Intent intent = new Intent(MainActivity.this, Step2PedicureActivity.class);
-               // startActivity(intent);
-           // }
-      //  });
+        // כפתור אינסטגרם
+        ImageView instagramBtn = findViewById(R.id.instagramBtn);
+        instagramBtn.setOnClickListener(v -> {
+            String hamamlaha_eilat = "hamamlaha_eilat";
+            Uri uri = Uri.parse("http://instagram.com/_u/" + hamamlaha_eilat);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage("com.instagram.android");
+            try {
+                startActivity(intent);
+            } catch (Exception e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://instagram.com/" + hamamlaha_eilat)));
+            }
+        });
 
     }
 }

@@ -42,7 +42,7 @@ public class LandingActivity extends BaseActivity {
             Intent intent;
             if (user.isAdmin()) {
                 Log.d(TAG, "navigating to AdminActivity");
-                intent = new Intent(LandingActivity.this, AdminActivity.class);
+                intent = new Intent(LandingActivity.this, AdminHomeActivity.class);
             } else {
                 Log.d(TAG, "navigating to MainActivity2");
                 intent = new Intent(LandingActivity.this, MainActivity2.class);
@@ -56,11 +56,11 @@ public class LandingActivity extends BaseActivity {
         Button login = findViewById(R.id.login);
         Button singUp = findViewById(R.id.signUp);
         login.setOnClickListener(v -> {
-            Intent intent = new Intent(LandingActivity.this, RegisterActivity.class);
+            Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
             startActivity(intent);
         });
         singUp.setOnClickListener(v -> {
-            Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
+            Intent intent = new Intent(LandingActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
     }

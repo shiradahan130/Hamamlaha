@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -103,7 +102,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         Intent intent;
 
                         if (user.isAdmin()) {
-                            intent = new Intent(LoginActivity.this, AdminActivity.class);
+                            intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                         } else {
                             intent = new Intent(LoginActivity.this, MainActivity2.class);
                         }

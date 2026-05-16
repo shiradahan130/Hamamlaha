@@ -77,7 +77,6 @@ public abstract class BaseActivity extends AppCompatActivity
         navigationView.getMenu().clear();
         navigationView.inflateMenu(getNavMenu());
 
-        // הסתר "ניהול משתמשים" מאדמין רגיל
         MenuItem manageUsersItem = navigationView.getMenu().findItem(R.id.nav_manage_users);
         if (manageUsersItem != null) {
             manageUsersItem.setVisible(isMainAdmin());
@@ -209,15 +208,14 @@ public abstract class BaseActivity extends AppCompatActivity
         } else if (id == R.id.nav_signOut) {
             drawerLayout.closeDrawer(GravityCompat.START);
             showLogoutDialog();
-        }
-
-        // ✅ חדש - התורים שלי
-        else if (id == R.id.nav_my_appointments) {
+        } else if (id == R.id.nav_my_appointments) {
             navigateTo(MyAppointmentsActivity.class);
         }
 
         // תפריט אדמין
-        else if (id == R.id.nav_appointments) {
+        else if (id == R.id.nav_admin_home) {
+            navigateTo(AdminHomeActivity.class);
+        } else if (id == R.id.nav_appointments) {
             navigateTo(AdminActivity.class);
         } else if (id == R.id.nav_manage_users) {
             if (isMainAdmin()) {

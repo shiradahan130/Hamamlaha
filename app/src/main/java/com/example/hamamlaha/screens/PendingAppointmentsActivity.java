@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AdminActivity extends BaseActivity {
+public class PendingAppointmentsActivity extends BaseActivity {
 
     @Override
     protected boolean hasSideMenu() {
@@ -42,7 +42,7 @@ public class AdminActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_admin); // משתמשים באותו layout!
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -66,13 +66,12 @@ public class AdminActivity extends BaseActivity {
                 DatabaseService.getInstance().deleteAppointment(appointment.getAppointmentId(), new DatabaseService.DatabaseCallback<Void>() {
                     @Override
                     public void onCompleted(Void v) {
-                        Log.d("AdminActivity", "Appointment deleted successfully");
                         loadAppointments();
                     }
 
                     @Override
                     public void onFailed(Exception e) {
-                        Log.e("AdminActivity", "Failed to delete appointment", e);
+                        Log.e("PendingActivity", "Failed to delete appointment", e);
                     }
                 });
             }
@@ -87,13 +86,13 @@ public class AdminActivity extends BaseActivity {
                 @Override
                 public void onCompleted(User user) {
                     currentUser = user;
-                    SharedPreferencesUtil.saveUser(AdminActivity.this, user);
+                    SharedPreferencesUtil.saveUser(PendingAppointmentsActivity.this, user);
                     loadAppointments();
                 }
 
                 @Override
                 public void onFailed(Exception e) {
-                    Log.e("AdminActivity", "Failed to refresh user", e);
+                    Log.e("PendingActivity", "Failed to refresh user", e);
                 }
             });
         }
@@ -105,6 +104,7 @@ public class AdminActivity extends BaseActivity {
             public void onCompleted(List<Appointment> allAppointments) {
                 List<Appointment> filtered;
 
+                // פילטר לפי קטגוריה (עובד vs מנהל ראשי)
                 if (currentUser == null ||
                         currentUser.getAdminCategory() == null ||
                         currentUser.getAdminCategory().isEmpty()) {
@@ -116,14 +116,18 @@ public class AdminActivity extends BaseActivity {
                             .collect(Collectors.toList());
                 }
 
+                // פילטר PENDING בלבד ← זה ההבדל מ-AdminActivity
+                filtered = filtered.stream()
+                        .filter(a -> "PENDING".equals(a.getStatus()))
+                        .collect(Collectors.toList());
+
                 adapter.updateAppointments(filtered);
-                //  עדכון מספר התורים
-                tvAppointmentCount.setText("מספר תורים: " + filtered.size());
+                tvAppointmentCount.setText("תורים ממתינים: " + filtered.size());
             }
 
             @Override
             public void onFailed(Exception e) {
-                Log.e("AdminActivity", "Failed to load appointments", e);
+                Log.e("PendingActivity", "Failed to load appointments", e);
             }
         });
     }
