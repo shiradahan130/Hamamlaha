@@ -13,16 +13,6 @@ public class LandingActivity extends BaseActivity {
 
     private static final String TAG = "DEBUG_LANDING";
 
-    @Override
-    protected boolean hasSideMenu() {
-        return false;
-    }
-
-    @Override
-    protected boolean hasToolbar() {
-        return false;
-    }
-
     User user;
 
     @Override
@@ -63,5 +53,15 @@ public class LandingActivity extends BaseActivity {
             Intent intent = new Intent(LandingActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected boolean hasSideMenu() {
+        return false;
+    }
+
+    @Override
+    protected boolean hasToolbar() {
+        return false;
     }
 }
