@@ -237,7 +237,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 .setTitle("התנתקות")
                 .setMessage("את/ה בטוח/ה שאת/ה רוצה להתנתק?")
                 .setPositiveButton("כן", (dialog, which) -> {
-                    SharedPreferencesUtil.signOutUser(this);
+                    SharedPreferencesUtil.signOutUser(this); // מוחק את המשתמש מהShared Preferences
                     Intent intent = new Intent(this, LandingActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

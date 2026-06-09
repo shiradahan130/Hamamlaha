@@ -142,7 +142,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void object) {
-                SharedPreferencesUtil.saveUser(RegisterActivity.this, user);
+                SharedPreferencesUtil.saveUser(RegisterActivity.this, user);// שומר את המשתמש בShared Preferences
                 Intent mainIntent = new Intent(RegisterActivity.this, MainActivity2.class);
                 mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
@@ -151,7 +151,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onFailed(Exception e) {
                 Toast.makeText(RegisterActivity.this, "Failed to register user", Toast.LENGTH_SHORT).show();
-                SharedPreferencesUtil.signOutUser(RegisterActivity.this);
+                SharedPreferencesUtil.signOutUser(RegisterActivity.this); // מוחק את המשתמש מהShared Preferences
             }
         });
     }

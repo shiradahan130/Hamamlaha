@@ -22,13 +22,13 @@ import java.util.List;
 
 public class UsersListActivity extends BaseActivity {
 
-    // ✅ מציג תפריט צד
+    //  מציג תפריט צד
     @Override
     protected boolean hasSideMenu() {
         return true;
     }
 
-    // ✅ טוען את תפריט האדמין במקום תפריט המשתמש הרגיל
+    //  טוען את תפריט האדמין במקום תפריט המשתמש הרגיל
     @Override
     protected int getNavMenu() {
         return R.menu.menu_admin;

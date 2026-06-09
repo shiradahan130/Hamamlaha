@@ -109,7 +109,7 @@ public class AdminActivity extends BaseActivity {
                     } else {
                         currentCategory = SalonCategory.values()[pos - 1].name();
                     }
-                    applyFilterAndDisplay();
+                    applyFilterAndDisplay(); //  מפעיל סינון מחדש
                 }
                 @Override public void onTabUnselected(TabLayout.Tab tab) {}
                 @Override public void onTabReselected(TabLayout.Tab tab) {}
@@ -123,7 +123,7 @@ public class AdminActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 currentStatus = tab.getPosition() == 0 ? "PENDING" : "APPROVED";
-                applyFilterAndDisplay();
+                applyFilterAndDisplay(); //  מפעיל סינון מחדש
             }
             @Override public void onTabUnselected(TabLayout.Tab tab) {}
             @Override public void onTabReselected(TabLayout.Tab tab) {}

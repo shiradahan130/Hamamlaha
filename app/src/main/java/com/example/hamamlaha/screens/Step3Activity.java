@@ -50,7 +50,7 @@ public class Step3Activity extends BaseActivity {
         calendarView.setMinDate(System.currentTimeMillis());
 
         // הגבלת תאריך מקסימלי - עד 3 חודשים קדימה
-        long threeMonthsFromNow = System.currentTimeMillis() + (long)(90L * 24 * 60 * 60 * 1000);
+        long threeMonthsFromNow = System.currentTimeMillis() + (long)(90L * 24 * 60 * 60 * 1000);// 90 ימים * 24 שעות * 60 דקות * 60 שניות * 1000 מילישניות
         calendarView.setMaxDate(threeMonthsFromNow);
 
         // תאריך ברירת מחדל = היום

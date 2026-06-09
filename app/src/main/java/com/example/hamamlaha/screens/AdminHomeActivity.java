@@ -89,6 +89,7 @@ public class AdminHomeActivity extends BaseActivity {
         loadAppointmentCounts();
     }
 
+    //סופר את המשתמשים מהדטה בייס
     private void loadUserCount() {
         DatabaseService.getInstance().getUserList(new DatabaseService.DatabaseCallback<List<User>>() {
             @Override
@@ -103,6 +104,7 @@ public class AdminHomeActivity extends BaseActivity {
         });
     }
 
+    //סופר את כל התורים מהדטה בייס
     private void loadAppointmentCounts() {
         DatabaseService.getInstance().getAppointmentList(new DatabaseService.DatabaseCallback<List<Appointment>>() {
             @Override
@@ -112,6 +114,7 @@ public class AdminHomeActivity extends BaseActivity {
                         currentUser.getAdminCategory() == null ||
                         currentUser.getAdminCategory().isEmpty();
 
+                //  מסנן רשימת תורים לפי סוג המנהל
                 List<Appointment> relevant;
                 if (isMainAdmin) {
                     relevant = allAppointments;

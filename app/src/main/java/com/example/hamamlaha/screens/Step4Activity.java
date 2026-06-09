@@ -111,10 +111,11 @@ public class Step4Activity extends BaseActivity {
                     Log.d("DEBUG", "appointment -> date: '" + a.getDate() + "' | time: '" + a.getTime() + "' | category: " + a.getCategory());
                 }
 
+                //  הקוד מסנן תורים לפי תאריך וקטגוריה בלבד - פילטר
                 List<Appointment> categoryAppointments = allAppointments.stream()
                         .filter(appointment ->
                                 appointment.getDate().equals(date) &&
-                                        (category == null || appointment.getCategory().equals(category)))
+                                        appointment.getCategory().equals(category))
                         .collect(Collectors.toList());
 
                 List<Appointment> userAppointments = allAppointments.stream()

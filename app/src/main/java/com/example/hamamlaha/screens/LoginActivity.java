@@ -97,7 +97,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         Log.d("LOGIN", "user: " + user.toString());
                         Log.d("LOGIN", "isAdmin: " + user.isAdmin());
 
-                        SharedPreferencesUtil.saveUser(LoginActivity.this, user);
+                        SharedPreferencesUtil.saveUser(LoginActivity.this, user); // שומר את המשתמש בShared Preferences
 
                         Intent intent;
 
@@ -115,7 +115,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     public void onFailed(Exception e) {
                         etPassword.setError("Invalid email or password");
                         etPassword.requestFocus();
-                        SharedPreferencesUtil.signOutUser(LoginActivity.this);
+                        SharedPreferencesUtil.signOutUser(LoginActivity.this); // מוחק את המשתמש מהShared Preferences
                     }
                 });
     }

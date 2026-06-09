@@ -81,7 +81,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             return true;
         });
 
-        // ✅ כפתור פח - מוחק משתמש לגמרי מהרשימה ומהפיירבייס
+        //  כפתור פח - מוחק משתמש לגמרי מהרשימה ומהפיירבייס
         holder.btnDelete.setOnClickListener(v -> {
             new androidx.appcompat.app.AlertDialog.Builder(v.getContext())
                     .setTitle("מחיקת משתמש")
