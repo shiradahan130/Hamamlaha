@@ -11,6 +11,7 @@ import com.example.hamamlaha.R;
 
 import java.util.List;
 
+//תמונות הלייזר - גורם לסיבוב האינסופי
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     private List<Integer> images;

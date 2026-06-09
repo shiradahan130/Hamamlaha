@@ -176,7 +176,7 @@ public class Step4Activity extends BaseActivity {
         });
     }
 
-    private List<String> getAvailableSlots() {
+    private List<String> getAvailableSlots() { // בודק אם פנוי
         List<String> available = new ArrayList<>();
         for (int i = 0; i < allTimeSlots.size(); i++) {
             if (i + duration > allTimeSlots.size()) break;
@@ -193,7 +193,7 @@ public class Step4Activity extends BaseActivity {
         return available;
     }
 
-    private List<String> getPartialSlots() {
+    private List<String> getPartialSlots() { //בודק אם אפשר לכלול אותו בתור
         List<String> partial = new ArrayList<>();
         for (int i = 0; i < allTimeSlots.size(); i++) {
             String slot = allTimeSlots.get(i);

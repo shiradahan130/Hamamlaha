@@ -47,7 +47,7 @@ public class MainActivity2 extends BaseActivity {
         Button btnWhatsapp = findViewById(R.id.btn_whatsapp);
         if (btnWhatsapp != null) {
             btnWhatsapp.setOnClickListener(v -> {
-                String phone = "9720533866468"; // קידומת ישראל
+                String phone = "9720533866468";
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("https://wa.me/" + phone));
                 startActivity(intent);

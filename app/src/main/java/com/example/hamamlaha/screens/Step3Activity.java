@@ -62,8 +62,7 @@ public class Step3Activity extends BaseActivity {
             selectedDate[0] = dayOfMonth + "/" + (month + 1) + "/" + year;
         });
 
-        // --- כפתור חזרה ---
-        // ✅ תיקון: חוזר למקום הנכון לפי הקטגוריה
+        //  כפתור חזרה - חוזר למקום הנכון לפי הקטגוריה
         Button button = findViewById(R.id.btngoback);
         button.setOnClickListener(view -> {
             Intent intent;

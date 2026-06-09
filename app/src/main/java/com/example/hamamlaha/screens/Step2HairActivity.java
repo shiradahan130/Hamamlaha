@@ -69,7 +69,7 @@ public class Step2HairActivity extends BaseActivity {
                 return;
             }
 
-            int duration = selectedOptions.size();
+            int duration = selectedOptions.size();//חישוב משך הטיפול
             String options = String.join(", ", selectedOptions);
 
             Intent intent = new Intent(Step2HairActivity.this, Step3Activity.class);

@@ -45,7 +45,7 @@ public class UserProfileActivity extends BaseActivity {
             return insets;
         });
 
-        // ✅ תיקון: כפתור חזרה חכם - חוזר לפי מי פתח את המסך
+        //  תיקון: כפתור חזרה חכם - חוזר לפי מי פתח את המסך
         boolean fromAdmin = getIntent().getBooleanExtra("FROM_ADMIN", false);
         Button button = findViewById(R.id.goBack);
         button.setOnClickListener(view -> {

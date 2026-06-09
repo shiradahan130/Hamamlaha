@@ -24,14 +24,14 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
     private final Context context;
     private List<String> timeSlots;
     private List<String> availableSlots;
-    private List<String> partialSlots; // ← חדש: פנוי אבל לא ניתן להתחיל מכאן
+    private List<String> partialSlots; //  חדש: פנוי אבל לא ניתן להתחיל מכאן
     private final OnSlotClickListener listener;
 
     public TimeSlotsAdapter(Context context, List<String> timeSlots, List<String> bookedSlots, OnSlotClickListener listener) {
         this.context = context;
         this.timeSlots = new ArrayList<>(timeSlots);
         this.availableSlots = new ArrayList<>(timeSlots); // בהתחלה הכל פנוי
-        this.partialSlots = new ArrayList<>(); // ← חדש
+        this.partialSlots = new ArrayList<>();
         this.listener = listener;
     }
 
@@ -47,8 +47,8 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
     public void onBindViewHolder(@NonNull TimeSlotViewHolder holder, int position) {
         String time = timeSlots.get(position);
         boolean isAvailable = availableSlots.contains(time);
-        boolean isPartial = partialSlots.contains(time); // ← חדש
-        holder.bind(time, isAvailable, isPartial); // ← עדכון
+        boolean isPartial = partialSlots.contains(time);
+        holder.bind(time, isAvailable, isPartial);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
     public void updateAvailableSlots(List<String> allSlots, List<String> newAvailableSlots, List<String> newPartialSlots) {
         this.timeSlots = new ArrayList<>(allSlots);
         this.availableSlots = new ArrayList<>(newAvailableSlots);
-        this.partialSlots = new ArrayList<>(newPartialSlots); // ← חדש
+        this.partialSlots = new ArrayList<>(newPartialSlots);
         notifyDataSetChanged();
     }
 
@@ -77,7 +77,7 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
             binding.tvItemTime.setText(time);
 
             if (isAvailable) {
-                // ✅ פנוי לגמרי - וי ירוק, ניתן ללחוץ
+                //  פנוי לגמרי - וי ירוק, ניתן ללחוץ
                 binding.ivStatusIcon.setImageResource(R.drawable.ic_check_circle);
                 binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
                         ContextCompat.getColor(context, R.color.green_500)));
@@ -87,7 +87,7 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
                 binding.cardTimeSlot.setOnClickListener(v -> listener.onSlotClick(time));
 
             } else if (isPartial) {
-                // ⚠️ שעה פנויה אבל לא ניתן להתחיל מכאן - סימן כתום, לא ניתן ללחוץ
+                //  שעה פנויה אבל לא ניתן להתחיל מכאן - סימן כתום, לא ניתן ללחוץ
                 binding.ivStatusIcon.setImageResource(R.drawable.ic_warning);
                 binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
                         ContextCompat.getColor(context, R.color.orange_400)));
@@ -97,7 +97,7 @@ public class TimeSlotsAdapter extends RecyclerView.Adapter<TimeSlotsAdapter.Time
                 binding.cardTimeSlot.setOnClickListener(null);
 
             } else {
-                // ❌ תפוס - איקס אדום, לא ניתן ללחוץ
+                //  תפוס - איקס אדום, לא ניתן ללחוץ
                 binding.ivStatusIcon.setImageResource(R.drawable.ic_cancel);
                 binding.ivStatusIcon.setImageTintList(ColorStateList.valueOf(
                         ContextCompat.getColor(context, R.color.red_400)));
