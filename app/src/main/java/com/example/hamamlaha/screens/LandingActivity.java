@@ -27,7 +27,7 @@ public class LandingActivity extends BaseActivity {
         Log.d(TAG, "user: " + user);
         Log.d(TAG, "isUserLoggedIn: " + SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this));
 
-        if (SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {
+        if (SharedPreferencesUtil.isUserLoggedIn(LandingActivity.this)) {// אם משתמש מחובר-מעביר בהתאם
             Log.d(TAG, "user is logged in - navigating...");
             Intent intent;
             if (user.isAdmin()) {
@@ -42,14 +42,14 @@ public class LandingActivity extends BaseActivity {
             return;
         }
 
-        Log.d(TAG, "user not logged in - showing landing screen");
+        Log.d(TAG, "user not logged in - showing landing screen");// משתמש לא מחובר
         Button login = findViewById(R.id.login);
-        Button singUp = findViewById(R.id.signUp);
+        Button signUp = findViewById(R.id.signUp);
         login.setOnClickListener(v -> {
             Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
             startActivity(intent);
         });
-        singUp.setOnClickListener(v -> {
+        signUp.setOnClickListener(v -> {
             Intent intent = new Intent(LandingActivity.this, RegisterActivity.class);
             startActivity(intent);
         });
@@ -60,6 +60,7 @@ public class LandingActivity extends BaseActivity {
         return false;
     }
 
+                                                     //ללא תפריט צד וטולבר
     @Override
     protected boolean hasToolbar() {
         return false;

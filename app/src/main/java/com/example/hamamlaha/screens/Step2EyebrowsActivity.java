@@ -60,7 +60,7 @@ public class Step2EyebrowsActivity extends BaseActivity {
                 return;
             }
 
-            int duration = selectedOptions.size();
+            int duration = selectedOptions.size();// משך התור
             String options = String.join(", ", selectedOptions);
 
             Intent intent = new Intent(Step2EyebrowsActivity.this, Step3Activity.class);

@@ -48,7 +48,7 @@ public class Step5Activity extends BaseActivity {
         tvOptions.setText(options);
         tvDate.setText(date);
 
-        // ✅ חישוב שעת סיום והצגת "ממתי עד מתי"
+        //  חישוב שעת סיום והצגת "ממתי עד מתי"
         tvTime.setText(calcTimeRange(time, duration));
 
         // כפתור חזרה לדף הבית
@@ -60,7 +60,7 @@ public class Step5Activity extends BaseActivity {
         });
     }
 
-    // ✅ מחשב טווח שעות בפורמט "HH:mm - HH:mm"
+    //  מחשב טווח שעות בפורמט "HH:mm - HH:mm"
     private String calcTimeRange(String startTime, int duration) {
         if (startTime == null || startTime.isEmpty()) return "";
 

@@ -31,9 +31,9 @@ public class SplashActivity extends AppCompatActivity {
 
         Thread splashThread = new Thread(() -> {
             try {
-                Thread.sleep(SPLASH_DISPLAY_TIME);
+                Thread.sleep(SPLASH_DISPLAY_TIME);//ממתין 3 שניות
             } catch (InterruptedException ignored) {
-            } finally {
+            } finally {// מחליט לאן ללכת
                 Intent intent;
                 if (SharedPreferencesUtil.isUserLoggedIn(this)) {
                     Log.d(TAG, "User signed in, redirecting...");
@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
                     Log.d(TAG, "User not signed in, redirecting to LandingActivity");
                     intent = new Intent(SplashActivity.this, LandingActivity.class);
                 }
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);// מונע חזרה לספלש
                 startActivity(intent);
             }
         });

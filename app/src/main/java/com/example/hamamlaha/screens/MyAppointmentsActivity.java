@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.adapter.MyAppointmentsAdapter;
 import com.example.hamamlaha.models.Appointment;
+import com.example.hamamlaha.models.SalonCategory;
 import com.example.hamamlaha.service.DatabaseService;
 import com.example.hamamlaha.utils.SharedPreferencesUtil;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,11 @@ public class MyAppointmentsActivity extends BaseActivity {
     private MyAppointmentsAdapter adapter;
     private TextView tvCount, tvEmpty;
     private RecyclerView rv;
+    private TabLayout tabLayoutCategory, tabLayoutStatus;
+
+    private List<Appointment> allMyAppointments = new ArrayList<>();
+    private String currentCategory = null; // null = הכל
+    private String currentStatus = "PENDING";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +45,44 @@ public class MyAppointmentsActivity extends BaseActivity {
             return insets;
         });
 
-        tvCount = findViewById(R.id.tv_appointment_count);
-        tvEmpty = findViewById(R.id.tv_empty);
-        rv = findViewById(R.id.rv_my_appointments);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        tvCount  = findViewById(R.id.tv_appointment_count);
+        tvEmpty  = findViewById(R.id.tv_empty);
+        rv       = findViewById(R.id.rv_my_appointments);
+        tabLayoutCategory = findViewById(R.id.tab_layout_category);
+        tabLayoutStatus   = findViewById(R.id.tab_layout_status);
 
+        rv.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyAppointmentsAdapter(this, new ArrayList<>());
         rv.setAdapter(adapter);
+
+        // טאב קטגוריות
+        tabLayoutCategory.addTab(tabLayoutCategory.newTab().setText("הכל"));
+        for (SalonCategory cat : SalonCategory.values()) {
+            tabLayoutCategory.addTab(tabLayoutCategory.newTab().setText(cat.getHebrewName()));
+        }
+        tabLayoutCategory.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int pos = tab.getPosition();
+                currentCategory = pos == 0 ? null : SalonCategory.values()[pos - 1].name();
+                applyFilterAndDisplay();
+            }
+            @Override public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override public void onTabReselected(TabLayout.Tab tab) {}
+        });
+
+        // טאב סטטוס
+        tabLayoutStatus.addTab(tabLayoutStatus.newTab().setText("ממתין לאישור"));
+        tabLayoutStatus.addTab(tabLayoutStatus.newTab().setText("מאושר"));
+        tabLayoutStatus.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                currentStatus = tab.getPosition() == 0 ? "PENDING" : "APPROVED";
+                applyFilterAndDisplay();
+            }
+            @Override public void onTabUnselected(TabLayout.Tab tab) {}
+            @Override public void onTabReselected(TabLayout.Tab tab) {}
+        });
 
         loadMyAppointments();
     }
@@ -61,27 +99,39 @@ public class MyAppointmentsActivity extends BaseActivity {
         DatabaseService.getInstance().getAppointmentList(new DatabaseService.DatabaseCallback<List<Appointment>>() {
             @Override
             public void onCompleted(List<Appointment> allAppointments) {
-                // מסנן רק את התורים של המשתמש הנוכחי
-                List<Appointment> myAppointments = allAppointments.stream()
+                allMyAppointments = allAppointments.stream()
                         .filter(a -> a.getUserId() != null && a.getUserId().equals(currentUserId))
                         .collect(Collectors.toList());
 
-                adapter.updateAppointments(myAppointments);
-                tvCount.setText("מספר תורים: " + myAppointments.size());
-
-                // מציג הודעה אם אין תורים
-                if (myAppointments.isEmpty()) {
-                    rv.setVisibility(View.GONE);
-                    tvEmpty.setVisibility(View.VISIBLE);
-                } else {
-                    rv.setVisibility(View.VISIBLE);
-                    tvEmpty.setVisibility(View.GONE);
-                }
+                tvCount.setText("מספר תורים: " + allMyAppointments.size());
+                applyFilterAndDisplay();
             }
 
             @Override
-            public void onFailed(Exception e) {
-            }
+            public void onFailed(Exception e) {}
         });
+    }
+
+    private void applyFilterAndDisplay() {
+        List<Appointment> filtered = allMyAppointments.stream()
+                .filter(a -> {
+                    if (currentCategory != null) {
+                        if (a.getCategory() == null) return false;
+                        if (!a.getCategory().name().equals(currentCategory)) return false;
+                    }
+                    return currentStatus.equals(a.getStatus());
+                })
+                .collect(Collectors.toList());
+
+        adapter.updateAppointments(filtered);
+        tvCount.setText("מספר תורים: " + filtered.size());
+
+        if (filtered.isEmpty()) {
+            rv.setVisibility(View.GONE);
+            tvEmpty.setVisibility(View.VISIBLE);
+        } else {
+            rv.setVisibility(View.VISIBLE);
+            tvEmpty.setVisibility(View.GONE);
+        }
     }
 }

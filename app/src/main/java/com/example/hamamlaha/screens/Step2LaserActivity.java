@@ -68,7 +68,7 @@ public class Step2LaserActivity extends BaseActivity {
                 return;
             }
 
-            int duration = selectedOptions.size();
+            int duration = selectedOptions.size();//משך התור
             String options = String.join(", ", selectedOptions);
 
             Intent intent = new Intent(Step2LaserActivity.this, Step3Activity.class);

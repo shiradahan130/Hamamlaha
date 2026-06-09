@@ -12,34 +12,41 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hamamlaha.R;
 import com.example.hamamlaha.models.Appointment;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAdapter.ViewHolder> {
+public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAdapter.ItemViewHolder> {
 
     private final Context context;
-    private List<Appointment> appointments;
+    private final List<Appointment> items = new ArrayList<>();
 
     public MyAppointmentsAdapter(Context context, List<Appointment> appointments) {
         this.context = context;
-        this.appointments = appointments;
+        this.items.addAll(appointments);
+    }
+
+    public void updateAppointments(List<Appointment> newAppointments) {
+        items.clear();
+        items.addAll(newAppointments);
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_my_appointment, parent, false);
-        return new ViewHolder(view);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.item_my_appointment, parent, false);
+        return new ItemViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Appointment appointment = appointments.get(position);
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+        Appointment appointment = items.get(position);
 
-        holder.tvCategory.setText(appointment.getCategory() != null ? appointment.getCategory().getHebrewName() : "");
+        holder.tvCategory.setText(appointment.getCategory() != null
+                ? appointment.getCategory().getHebrewName() : "");
         holder.tvDateTime.setText(appointment.getDate() + " | " + appointment.getTime());
         holder.tvOptions.setText(appointment.getStatus());
 
-        // צבע סטטוס
         switch (appointment.getStatus()) {
             case "APPROVED":
                 holder.tvStatus.setText("מאושר ✓");
@@ -66,24 +73,16 @@ public class MyAppointmentsAdapter extends RecyclerView.Adapter<MyAppointmentsAd
     }
 
     @Override
-    public int getItemCount() {
-        return appointments.size();
-    }
+    public int getItemCount() { return items.size(); }
 
-    public void updateAppointments(List<Appointment> newAppointments) {
-        this.appointments = newAppointments;
-        notifyDataSetChanged();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategory, tvStatus, tvDateTime, tvOptions;
-
-        public ViewHolder(@NonNull View itemView) {
+        ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCategory = itemView.findViewById(R.id.tv_category);
-            tvStatus = itemView.findViewById(R.id.tv_status);
+            tvStatus   = itemView.findViewById(R.id.tv_status);
             tvDateTime = itemView.findViewById(R.id.tv_date_time);
-            tvOptions = itemView.findViewById(R.id.tv_options);
+            tvOptions  = itemView.findViewById(R.id.tv_options);
         }
     }
 }

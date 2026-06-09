@@ -85,7 +85,7 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
 
             switch (appointment.getStatus()) {
                 case "APPROVED":
-                    tvStatus.setText("מאושר ✓");
+                    tvStatus.setText("מאושר");
                     tvStatus.setBackgroundResource(R.drawable.bg_status);
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
@@ -94,7 +94,7 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                     btnCancel.setVisibility(View.VISIBLE);
                     break;
                 case "CANCELED":
-                    tvStatus.setText("בוטל ✗");
+                    tvStatus.setText("בוטל");
                     tvStatus.setBackgroundResource(R.drawable.bg_status);
                     tvStatus.setBackgroundTintList(
                             android.content.res.ColorStateList.valueOf(
@@ -133,7 +133,7 @@ public class AppointmentAdminAdapter extends RecyclerView.Adapter<AppointmentAdm
                         .show();
             });
 
-            // ✅ כפתור פח - מוחק את התור לגמרי מהרשימה ומהפיירבייס
+            //  כפתור פח - מוחק את התור לגמרי מהרשימה ומהפיירבייס
             btnDelete.setOnClickListener(v -> {
                 new androidx.appcompat.app.AlertDialog.Builder(context)
                         .setTitle("מחיקת תור")

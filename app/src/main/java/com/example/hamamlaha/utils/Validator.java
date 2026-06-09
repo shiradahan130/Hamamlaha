@@ -4,38 +4,37 @@ import android.util.Patterns;
 
 import androidx.annotation.Nullable;
 
-/// Validator class to validate user input.
-/// This class contains static methods to validate user input,
-/// like email, password, phone, name etc.
+/// מחלקת וולידציה לבדיקת קלט מהמשתמש
+/// מכילה מתודות סטטיות לבדיקת תקינות קלט,
+/// כגון אימייל, סיסמה, טלפון, שם וכו׳
 public class Validator {
 
-    /// Check if the email is valid
-    /// @param email email to validate
-    /// @return true if the email is valid, false otherwise
+    /// בדיקה האם האימייל תקין
+    /// @param email האימייל לבדיקה
+    /// @return true אם האימייל תקין, false אחרת
     /// @see Patterns#EMAIL_ADDRESS
     public static boolean isEmailValid(@Nullable String email) {
         return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    /// Check if the password is valid
-    /// @param password password to validate
-    /// @return true if the password is valid, false otherwise
+    /// בדיקה האם הסיסמה תקינה
+    /// @param password הסיסמה לבדיקה
+    /// @return true אם הסיסמה תקינה (לפחות 6 תווים), false אחרת
     public static boolean isPasswordValid(@Nullable String password) {
         return password != null && password.length() >= 6;
     }
 
-
-    /// Check if the phone number is valid
-    /// @param phone phone number to validate
-    /// @return true if the phone number is valid, false otherwise
+    /// בדיקה האם מספר הטלפון תקין
+    /// @param phone מספר הטלפון לבדיקה
+    /// @return true אם מספר הטלפון תקין, false אחרת
     /// @see Patterns#PHONE
     public static boolean isPhoneValid(@Nullable String phone) {
         return phone != null && phone.length() >= 10 && Patterns.PHONE.matcher(phone).matches();
     }
 
-    /// Check if the name is valid
-    /// @param name name to validate
-    /// @return true if the name is valid, false otherwise
+    /// בדיקה האם השם תקין
+    /// @param name השם לבדיקה
+    /// @return true אם השם תקין (לפחות 2 תווים), false אחרת
     public static boolean isNameValid(@Nullable String name) {
         return name != null && name.length() >= 2;
     }

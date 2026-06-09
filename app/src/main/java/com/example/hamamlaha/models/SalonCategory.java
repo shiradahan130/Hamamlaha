@@ -3,7 +3,7 @@ package com.example.hamamlaha.models;
 import com.example.hamamlaha.R;
 
 public enum SalonCategory {
-
+// רשימת קבועים
     HAIR("Hair", "שיער", R.drawable.hairicon),
     NAILS("Nails", "ציפורניים", R.drawable.nailsicon),
     EYEBROWS("Eyebrows", "גבות", R.drawable.eyebrowsicon),
